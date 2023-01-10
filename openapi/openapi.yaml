@@ -1,11 +1,11 @@
 openapi: 3.1.0
 info:
   version: 1.0.0
-  title: Example.com
-  termsOfService: 'https://example.com/terms/'
+  title: Autheuse.com
+  termsOfService: 'https://autheus.com/terms/'
   contact:
-    email: contact@example.com
-    url: 'http://example.com/contact'
+    email: contact@autheus.com
+    url: 'http://autheus.com/contact'
   license:
     name: Apache 2.0
     url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
