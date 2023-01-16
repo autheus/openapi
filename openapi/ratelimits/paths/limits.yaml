@@ -1,0 +1,38 @@
+post:
+  tags:
+    - Rate Limiting
+  summary: >-
+    Request a rate-limiting decision for the given request context. This is
+    the runtime implementation of all the other configuration of this API
+  operationId: 'RateLimit::decision'
+  parameters:
+    - name: explain
+      in: query
+      description: When 'true' returns all the API Keys, their metrics, and the rate-limiting decision for each.
+      required: false
+      allowEmptyValue: true
+      schema:
+        type: boolean
+  requestBody:
+    description: Request context and data
+    content:
+      application/json:
+        schema:
+          $ref: ../RateLimitRequest.json
+    required: true
+  responses:
+    '200':
+      description: Returns the decision for the given request
+      content:
+        application/json:
+          schema:
+            $ref: ../RateLimitResponse.json
+    '400':
+      $ref: ../../responses/400BadRequest.yaml
+    '401':
+      $ref: ../../responses/401Unauthorized.yaml
+    '403':
+      $ref: ../../responses/403Forbidden.yaml
+    '404':
+      $ref: ../../responses/404NotFound.yaml
+        

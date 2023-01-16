@@ -1,0 +1,35 @@
+{
+  "$id" : "https://schema.autheus.com/tenants/OrganizationDto.json",
+  "$schema" : "https://json-schema.org/draft/2019-09/schema",
+  "type" : "object",
+  "properties" : {
+    "description" : {
+      "type" : "string",
+      "maxLength" : 1024
+    },
+    "id" : {
+      "type" : "string",
+      "format" : "uuid"
+    },
+    "name" : {
+      "type" : "string",
+      "maxLength" : 256
+    },
+    "parent" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "string",
+          "format" : "uuid"
+        }
+      },
+      "required" : [ "id" ]
+    },
+    "slug" : {
+      "type" : "string",
+      "pattern" : "[a-z_\\-0-9]+"
+    }
+  },
+  "title" : "Organization",
+  "description" : "JSON Schema definition for Organization"
+}

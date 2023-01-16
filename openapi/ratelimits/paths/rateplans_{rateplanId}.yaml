@@ -1,0 +1,56 @@
+parameters:
+  - $ref: ../parameters/ratePlanId.yaml
+get:
+  tags:
+    - Rate Plans
+  summary: Read a rate plan (by ID or slug)
+  operationId: 'RatePlan::read'
+  responses:
+    '200':
+      description: Rate plan configuration
+      content:
+        application/json:
+          schema:
+            $ref: ../RatePlan.json
+put:
+  tags:
+    - Rate Plans
+  summary: Update a rate plan (by its ID or slug)
+  operationId: 'RatePlan::update'
+  requestBody:
+    description: Rate plan configuration data
+    content:
+      application/json:
+        schema:
+          $ref: ../RatePlan.json
+    required: true
+  responses:
+    '204':
+      description: No content
+delete:
+  tags:
+    - Rate Plans
+  summary: Remove a rate plan (by its ID or slug)
+  operationId: 'RatePlan::delete'
+  responses:
+    '204':
+      description: No content
+patch:
+  tags:
+    - Rate Plans
+  summary: Perform a partial update of a rate plan (by its ID or slug)
+  operationId: 'RatePlan::patch'
+  requestBody:
+    description: Rate plan configuration data to be updated
+    content:
+      application/json:
+        schema:
+          $ref: ../RatePlanDto.json
+    required: true
+  responses:
+    '200':
+      description: The entire newly-updated rate plan configuration
+      content:
+        application/json:
+          schema:
+            $ref: ../RatePlan.json

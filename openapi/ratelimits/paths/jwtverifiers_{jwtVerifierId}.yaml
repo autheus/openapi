@@ -1,0 +1,91 @@
+parameters:
+  - $ref: ../parameters/jwtVerifierId.yaml
+get:
+  tags:
+    - JWT Verifiers
+  summary: Read a Java Web Token (JWT) verification configuration (by ID or slug)
+  operationId: 'JwtConfig::read'
+  responses:
+    '200':
+      description: JWT verification configuration
+      content:
+        application/json:
+          schema:
+            $ref: ../JwtConfig.json
+    '401':
+      $ref: ../../responses/401Unauthorized.yaml
+    '403':
+      $ref: ../../responses/403Forbidden.yaml
+    '404':
+      $ref: ../../responses/404NotFound.yaml
+put:
+  tags:
+    - JWT Verifiers
+  summary: Update a Java Web Token (JWT) verification configuration (by ID or slug)
+  operationId: 'JwtConfig::update'
+  requestBody:
+    description: JWT verification configuration
+    content:
+      application/json:
+        schema:
+          $ref: ../JwtConfig.json
+    required: true
+  responses:
+    '204':
+      description: No content
+    '400':
+      $ref: ../../responses/400BadRequest.yaml
+    '401':
+      $ref: ../../responses/401Unauthorized.yaml
+    '403':
+      $ref: ../../responses/403Forbidden.yaml
+    '404':
+      $ref: ../../responses/404NotFound.yaml
+    '409':
+      $ref: ../../responses/409Conflict.yaml
+delete:
+  tags:
+    - JWT Verifiers
+  summary: Remove a Java Web Token (JWT) verification configuration (by ID or slug)
+  operationId: 'JwtConfig::delete'
+  responses:
+    '204':
+      description: No content
+    '401':
+      $ref: ../../responses/401Unauthorized.yaml
+    '403':
+      $ref: ../../responses/403Forbidden.yaml
+    '404':
+      $ref: ../../responses/404NotFound.yaml
+patch:
+  tags:
+    - JWT Verifiers
+  summary: >-
+    Perform a partial update of a Java Web Token (JWT) verification
+    configuration (by ID or slug)
+  operationId: 'JwtConfig::patch'
+  requestBody:
+    description: JWT verification configuration data to be updated
+    content:
+      application/json:
+        schema:
+          $ref: ../JwtConfigDto.json
+    required: true
+  responses:
+    '200':
+      description: The entire newly-updated JWT verification configuration
+      content:
+        application/json:
+          schema:
+            $ref: ../JwtConfig.json
+    '400':
+      $ref: ../../responses/400BadRequest.yaml
+    '401':
+      $ref: ../../responses/401Unauthorized.yaml
+    '403':
+      $ref: ../../responses/403Forbidden.yaml
+    '404':
+      $ref: ../../responses/404NotFound.yaml
+    '409':
+      $ref: ../../responses/409Conflict.yaml
+        

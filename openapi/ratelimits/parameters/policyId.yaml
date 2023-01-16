@@ -1,0 +1,6 @@
+name: policyId
+in: path
+description: The policy defintion ID (either UUID or slug)
+required: true
+schema:
+  type: string

@@ -1,0 +1,100 @@
+parameters:
+  - $ref: ../parameters/apikey.yaml
+get:
+  tags:
+    - API Keys
+  summary: Read a static API key (by ID or key)
+  operationId: 'ApiKey::read'
+  parameters:
+    - name: expand
+      in: query
+      description: Expand referenced resources. Valid values are 'rateplan'
+      required: false
+      allowEmptyValue: false
+      schema:
+        type: string 
+  responses:
+    '200':
+      description: API key metadata
+      content:
+        application/json:
+          schema:
+            $ref: ../ApiKey.json
+    '401':
+      $ref: ../../responses/401Unauthorized.yaml
+    '403':
+      $ref: ../../responses/403Forbidden.yaml
+    '404':
+      $ref: ../../responses/404NotFound.yaml
+    '409':
+      $ref: ../../responses/409Conflict.yaml
+  deprecated: false
+put:
+  tags:
+    - API Keys
+  summary: Update a static API key (by ID or key)
+  operationId: 'ApiKey::update'
+  requestBody:
+    description: API key metadata
+    content:
+      application/json:
+        schema:
+          $ref: ../ApiKey.json
+    required: true
+  responses:
+    '204':
+      $ref: ../../responses/204NoContent.yaml
+    '400':
+      $ref: ../../responses/400BadRequest.yaml
+    '401':
+      $ref: ../../responses/401Unauthorized.yaml
+    '403':
+      $ref: ../../responses/403Forbidden.yaml
+    '404':
+      $ref: ../../responses/404NotFound.yaml
+    '409':
+      $ref: ../../responses/409Conflict.yaml
+delete:
+  tags:
+    - API Keys
+  summary: Remove a static API key (by ID or key)
+  operationId: 'ApiKey::delete'
+  responses:
+    '204':
+      $ref: ../../responses/204NoContent.yaml
+    '401':
+      $ref: ../../responses/401Unauthorized.yaml
+    '403':
+      $ref: ../../responses/403Forbidden.yaml
+    '404':
+      $ref: ../../responses/404NotFound.yaml
+patch:
+  tags:
+    - API Keys
+  summary: Perform a partial update of a static API key (by ID or key)
+  operationId: 'ApiKey::patch'
+  requestBody:
+    description: API key metadata to be updated
+    content:
+      application/json:
+        schema:
+          $ref: ../../ratelimits/ApiKeyDto.json
+    required: true
+  responses:
+    '200':
+      description: The entire newly-updated API key
+      content:
+        application/json:
+          schema:
+            $ref: ../../ratelimits/ApiKey.json
+    '400':
+      $ref: ../../responses/400BadRequest.yaml
+    '401':
+      $ref: ../../responses/401Unauthorized.yaml
+    '403':
+      $ref: ../../responses/403Forbidden.yaml
+    '404':
+      $ref: ../../responses/404NotFound.yaml
+    '409':
+      $ref: ../../responses/409Conflict.yaml
+        

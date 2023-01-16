@@ -1,0 +1,34 @@
+{
+  "type" : "object",
+  "properties" : {
+    "key" : {
+      "type" : "string",
+      "maxLength" : 256,
+      "description" : "REQUIRED. The API key to which rate-limits will be applied. It can contain alphanumeric characters, the numbers zero through nine, '_' (underscore) and '-' (dash) characters. Additionally, it can contain expression syntax to extract values from the incoming request headers, body, or JWT token (if an Authorization Rule is also applied)."
+    },
+    "plan" : {
+      "type" : "object",
+      "description" : "OPTIONAL. This is a reference to the associated rate plan which is used to apply rate limits. Static API keys do not need a rate plan assignment here because they are already assigned to a rate plan. On creation or update, either the 'id' or 'slug' property is required (not both).",
+      "properties" : {
+        "id" : {
+          "description" : "The immutable identifier of the associated rate plan.",
+          "type" : "string",
+          "format" : "uuid"
+        },
+        "slug" : {
+          "description" : "The url-safe name of the associated rate plan.",
+          "type" : "string",
+          "maxLength" : 256,
+          "pattern" : "[a-z_\\-0-9]+"
+        }
+      }
+    },
+    "onError" : {
+      "description" : "OPTIONAL. Used only for static API keys when an API key is not valid (not predefined).",
+      "$ref" : "ErrorRuleDefinitionDto.json"
+    }
+  },
+  "required" : [ "key" ],
+  "title" : "ApiKeyRuleDefinitionDto",
+  "description" : "An API Key Rule is a core component of a Policy Definition which defines which API keys to apply rate limits to."
+}

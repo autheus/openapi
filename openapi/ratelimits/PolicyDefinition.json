@@ -1,0 +1,61 @@
+{
+  "type" : "object",
+  "properties" : {
+    "account" : {
+      "$ref" : "../AccountReference.json"
+    },
+    "apikeys" : {
+      "description" : "REQUIRED. An array of API Key Rules defining the API keys and associated rate plans to enforce rate limits. The API key values may be expressions that extract data from the incoming request.",
+      "minItems" : 1,
+      "maxItems" : 25,
+      "type" : "array",
+      "items" : {
+        "$ref" : "ApiKeyRuleDefinition.json",
+        "minItems" : 1,
+        "maxItems" : 25
+      }
+    },
+    "authorization" : {
+      "description" : "OPTIONAL. An authorization rule defining how incoming requests are validated for authorization, either API key or JWT Bearer token.",
+      "$ref" : "AuthorizationRuleDefinition.json"
+    },
+    "createdAt" : {
+      "description" : "READ-ONLY. A system-generated timestamp of when the API key was first created.",
+      "type" : "string",
+      "format" : "date-time"
+    },
+    "description" : {
+      "description" : "OPTIONAL. An optional description of the policy.",
+      "type" : "string",
+      "maxLength" : 1024
+    },
+    "id" : {
+      "description" : "READ-ONLY. The system-generated identifier for the API key. Can never be changed (it is immutable).",
+      "type" : "string",
+      "format" : "uuid"
+    },
+    "name" : {
+      "description": "REQUIRED. A human-friendly name for the policy.",
+      "type" : "string",
+      "maxLength" : 256
+    },
+    "onError" : {
+      "description" : "OPTIONAL. An optional statement containing configuration for runtime error conditions.",
+      "$ref" : "ErrorStatementDefinition.json"
+    },
+    "slug" : {
+      "description" : "REQUIRED. A url-safe name for the policy. It can contain lower-case alphanumeric characters, the numbers zero through nine, '_' (underscore) and '-' (dash) characters. If a value is not provided on creation, a slug-ified version of the 'name' property is generated.",
+      "type" : "string",
+      "maxLength" : 256,
+      "pattern" : "[a-z_\\-0-9]+"
+    },
+    "updatedAt" : {
+      "description" : "READ-ONLY. A system-generated timestamp of when the API key was last updated.",
+      "type" : "string",
+      "format" : "date-time"
+    }
+  },
+  "required" : [ "account", "apikeys", "combiningAlgorithm", "name", "slug" ],
+  "title" : "PolicyDefinition",
+  "description" : "Definition of a runtime rate-limiting policy and, optionally, authorization validation."
+}

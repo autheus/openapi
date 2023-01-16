@@ -1,0 +1,23 @@
+{
+  "type" : "object",
+  "properties" : {
+    "id" : {
+      "description" : "The immutable identifier of the associated rate plan.",
+      "type" : "string",
+      "format" : "uuid"
+    },
+    "name" : {
+      "description": "The human-friendly name of the associated rate plan. This property is read-only and simply shows the name of the rate plan.",
+      "type" : "string",
+      "maxLength" : 256
+    },
+    "slug" : {
+      "description" : "The url-safe name of the associated rate plan.",
+      "type" : "string",
+      "pattern" : "[a-z_\\-0-9]+"
+    }
+  },
+  "required" : [ "id", "name", "slug" ],
+  "title" : "RatePlanReference",
+  "description" : "RatePlanReference is a reference to a RatePlan assigned to API keys in order to apply rate limits at runtime. At creation or update time, only the slug or id is required, not both. On read all properties will be populated."
+}

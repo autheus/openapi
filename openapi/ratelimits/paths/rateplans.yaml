@@ -1,0 +1,33 @@
+get:
+  tags:
+    - Rate Plans
+  summary: List all the rate plans (paginated)
+  operationId: 'RatePlan::readAll'
+  responses:
+    '200':
+      description: An array of rate plans and associated configuration
+      content:
+        application/json:
+          schema:
+            $ref: ../RatePlans.json
+post:
+  tags:
+    - Rate Plans
+  summary: Create a new rate plan
+  operationId: 'RatePlan::create'
+  requestBody:
+    description: Rate plan configuration
+    content:
+      application/json:
+        schema:
+          $ref: ../RatePlanDto.json
+    required: true
+  responses:
+    '201':
+      description: >-
+        Successful rate plan creation. Returns the newly-created rate plan
+        configuration
+      content:
+        application/json:
+          schema:
+            $ref: ../RatePlan.json

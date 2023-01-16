@@ -1,0 +1,48 @@
+get:
+  tags:
+    - JWT Verifiers
+  summary: List all the Java Web Token verification configurations (paginated)
+  operationId: 'JwtConfig::readAll'
+  responses:
+    '200':
+      description: An array of JWT verification configurations
+      content:
+        application/json:
+          schema:
+            $ref: ../JwtVerifiers.json
+    '401':
+      $ref: ../../responses/401Unauthorized.yaml
+    '403':
+      $ref: ../../responses/403Forbidden.yaml
+post:
+  tags:
+    - JWT Verifiers
+  summary: Create a new Java Web Token (JWT) verifier configuration
+  operationId: 'JwtConfig::create'
+  requestBody:
+    description: JWT verification configuration
+    content:
+      application/json:
+        schema:
+          $ref: ../JwtConfig.json
+    required: true
+  responses:
+    '201':
+      description: >-
+        Successful creation. Returns the newly-created JWT verification
+        configuration
+      content:
+        application/json:
+          schema:
+            $ref: ../JwtConfig.json
+    '400':
+      $ref: ../../responses/400BadRequest.yaml
+    '401':
+      $ref: ../../responses/401Unauthorized.yaml
+    '403':
+      $ref: ../../responses/403Forbidden.yaml
+    '404':
+      $ref: ../../responses/404NotFound.yaml
+    '409':
+      $ref: ../../responses/409Conflict.yaml
+  

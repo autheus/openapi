@@ -1,0 +1,53 @@
+{
+  "type" : "object",
+  "properties" : {
+    "decision" : {
+      "type" : "string",
+      "enum" : [ "ALLOW", "DENY" ]
+    },
+    "quota" : {
+      "type" : "object",
+      "properties" : {
+        "capacity" : {
+          "type" : "integer"
+        },
+        "period" : {
+          "type" : "string",
+          "enum" : [ "HOUR", "DAY", "WEEK", "MONTH" ]
+        },
+        "renewsAt" : {
+          "type" : "string",
+          "format" : "date-time"
+        },
+        "tokensPerPeriod" : {
+          "type" : "integer"
+        }
+      }
+    },
+    "rateplan" : {
+      "$ref" : "RatePlanReference.json"
+    },
+    "throttle" : {
+      "type" : "object",
+      "properties" : {
+        "capacity" : {
+          "type" : "integer"
+        },
+        "lastTick" : {
+          "type" : "integer"
+        },
+        "maxCapacity" : {
+          "type" : "integer"
+        },
+        "periodLengthMillis" : {
+          "type" : "integer"
+        },
+        "tokensPerPeriod" : {
+          "type" : "integer"
+        }
+      }
+    }
+  },
+  "title" : "RateLimitMetricsDto",
+  "description" : "A read-only snapshot of Quota and Throttle metrics for an API key. Returned in a collection as a response from a rate-limit request"
+}

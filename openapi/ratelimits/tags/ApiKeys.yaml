@@ -1,0 +1,15 @@
+name: API Keys
+description: |
+  Management of Static API Keys.
+  
+  A Static API Key is:
+    - A pre-defined API key that is associated (statically) with a Rate Plan.
+    - An example is Tenant ID associated to a tenant SLA-related Rate Plan.
+    - Static API keys can also be utilized as authorization tokens for your API consumers.
+
+  A Dynamic API Key is:
+    - An API key that is assigned a Rate Plan at runtime (instead of statically pre-associated).
+    - Use these when there are a large quantity or they cannot be know beforehand.
+    - Some examples are IP address, user ID, device ID.
+    - Dynamic values can be pulled from the request context via scripting and used for Dynamic API keys.
+

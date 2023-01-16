@@ -1,0 +1,5 @@
+name: Rate-Limiting Metrics
+description: |
+  Rate-limiting metrics/analytics endpoints.
+
+  Rate-limiting Policy execution maintains stateful counters for each API Key that is active (has been used recently). These can be inspected at any time via an API call.

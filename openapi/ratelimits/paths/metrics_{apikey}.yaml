@@ -1,0 +1,16 @@
+parameters:
+  - $ref: ../parameters/apikey.yaml
+get:
+  tags:
+    - Rate-Limiting Metrics
+  summary: >-
+    Read all the metrics (against its assigned, possibly multiple, rate-plan
+    details) for a give API key. The API key must have already been seen.
+  operationId: 'RateLimit::read'
+  responses:
+    '200':
+      description: API key metadata
+      content:
+        application/json:
+          schema:
+            $ref: ../MetricsResponse.json

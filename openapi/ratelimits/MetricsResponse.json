@@ -1,0 +1,17 @@
+{
+  "type" : "object",
+  "properties" : {
+    "account" : {
+      "$ref" : "../AccountReference.json"
+    },
+    "metrics" : {
+      "type" : "object",
+      "description" : "This is a map of API keys to which rate-limiting is applied along with current metrics snapshot of rate limit counters associated with the API key. The API key may be extracted from the request if the API key in the policy contains expression language.",
+      "additionalProperties" : {
+          "$ref" : "MetricsDto.json"
+      }
+    }
+  },
+  "title" : "MetricsResponse",
+  "description" : "A read-only model detailing a metrics snapshot for a given API key"
+}

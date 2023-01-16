@@ -1,0 +1,36 @@
+{
+  "type" : "object",
+  "properties" : {
+    "headers" : {
+      "description" : "REQUIRED. The incoming headers from the request.",
+      "type" : "object",
+      "minItems" : 0,
+      "maxItems" : 256,
+      "additionalProperties" : { "type" : "object" }
+    },
+    "parameters" : {
+      "description" : "OPTIONAL. Any additional parameters needed by the policy (as name, value pairs). They can be extracted in the policy at runtime via expression langugage contained in the policy.",
+      "type" : "object",
+      "minItems" : 0,
+      "maxItems" : 256,
+      "additionalProperties" : { "type" : "string" }      
+    },
+    "policy" : {
+      "description" : "REQUIRED. The policy to run against this request. Either 'id' or 'slug' is required to lookup the policy to execute at runtime.",
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "string",
+          "format" : "uuid"
+        },
+        "slug" : {
+          "type" : "string",
+          "maxLength" : 256
+        }
+      }
+    }
+  },
+  "required" : [ "policy" ],
+  "title" : "RateLimitRequest",
+  "description" : "Request details for making a rate-limit decision request. The 'headers' and 'parameters' properties become context to the policy at runtime, where expressions in the policy can extract these values (e.g. ${headers.host} retrieves the host header)."
+}

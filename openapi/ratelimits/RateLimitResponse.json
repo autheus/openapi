@@ -1,0 +1,35 @@
+{
+  "type" : "object",
+  "properties" : {
+    "account" : {
+      "$ref" : "../AccountReference.json"
+    },
+    "allowed" : {
+      "type" : "boolean"
+    },
+    "errors" : {
+      "description" : "READ-ONLY. If any errors occured in the request they are listed here.",
+      "type" : "object",
+      "additionalProperties" : {
+        "type" : "string"
+      }
+    },
+    "metrics" : {
+      "description" : "READ-ONLY. When the 'explain' query-string parameter is enabled, all the API rate-limiting metrics associated in the request are returned here as a map with the API key as the key.",
+      "type" : "object",
+      "additionalProperties" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "RateLimitMetricsDto.json"
+          }
+      }
+    },
+    "result" : {
+      "description" : "READ-ONLY. Reflects the outcome of the rate-limiting request. If all of the rate limits are within range, contains 'ALLOW'. If any of the API key rate limits are exceeded (or an unrecoverable error occurs) contains 'DENY' unless overridden with the 'onError.decision' setting.",
+      "type" : "string",
+      "enum" : [ "ALLOW", "DENY" ]
+    }
+  },
+  "title" : "RateLimitResponse",
+  "description" : "RateLimitResponse reflects the decision from the rate-limit engine (aka Policy Decision Point or PDP). This is a read-only resource."
+}

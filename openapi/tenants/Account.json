@@ -1,0 +1,49 @@
+{
+  "type" : "object",
+  "properties" : {
+    "createdAt" : {
+      "type" : "string",
+      "format" : "date-time"
+    },
+    "description" : {
+      "type" : "string",
+      "maxLength" : 1024
+    },
+    "id" : {
+      "type" : "string",
+      "format" : "uuid"
+    },
+    "name" : {
+      "type" : "string",
+      "maxLength" : 256
+    },
+    "organization" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "string",
+          "format" : "uuid"
+        }
+      },
+      "required" : [ "id" ]
+    },
+    "parent" : {
+      "$ref" : "../AccountReference.json"
+    },
+    "region" : {
+      "type" : "string",
+      "enum" : ["NORTH_AMERICA"]
+    },
+    "slug" : {
+      "type" : "string",
+      "pattern" : "[a-z_\\-0-9]+"
+    },
+    "updatedAt" : {
+      "type" : "string",
+      "format" : "date-time"
+    }
+  },
+  "required" : [ "name", "organization", "region", "slug" ],
+  "title" : "Account",
+  "description" : "JSON Schema definition for Account"
+}

@@ -1,0 +1,6 @@
+name: jwtVerifierId
+in: path
+description: The JWT Verifier ID (either UUID or slug)
+required: true
+schema:
+  type: string

@@ -1,0 +1,268 @@
+{
+  "$id" : "https://schema.autheus.com/oidc/Client.json",
+  "$schema" : "https://json-schema.org/draft/2019-09/schema",
+  "$defs" : {
+    "ApplicationPolicy" : {
+      "type" : "object",
+      "properties" : {
+        "max" : {
+          "type" : "integer"
+        }
+      },
+      "required" : [ "max" ]
+    }
+  },
+  "type" : "object",
+  "properties" : {
+    "accounts" : {
+      "type" : "object",
+      "properties" : {
+        "allowDelegatedAdmin" : {
+          "type" : "boolean"
+        },
+        "allowProduction" : {
+          "type" : "boolean"
+        },
+        "max" : {
+          "type" : "integer"
+        },
+        "regions" : {
+          "minItems" : 0,
+          "maxItems" : 25,
+          "type" : "array",
+          "items" : {
+            "type" : "string",
+            "const" : "NORTH_AMERICA",
+            "minItems" : 0,
+            "maxItems" : 25
+          }
+        }
+      },
+      "required" : [ "max", "regions" ]
+    },
+    "appliesTo" : {
+      "minItems" : 0,
+      "maxItems" : 1000,
+      "type" : "array",
+      "items" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        },
+        "required" : [ "id" ],
+        "minItems" : 0,
+        "maxItems" : 1000
+      }
+    },
+    "billing" : {
+      "type" : "string",
+      "enum" : [ "NONE", "MONTHLY", "ANNUAL" ]
+    },
+    "createdAt" : {
+      "type" : "string",
+      "format" : "date-time"
+    },
+    "effectiveOn" : {
+      "type" : "string"
+    },
+    "expiresOn" : {
+      "type" : "string"
+    },
+    "id" : {
+      "type" : "string",
+      "format" : "uuid"
+    },
+    "organization" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "string",
+          "format" : "uuid"
+        }
+      },
+      "required" : [ "id" ]
+    },
+    "ratelimits" : {
+      "type" : "object",
+      "properties" : {
+        "apikeys" : {
+          "type" : "object",
+          "properties" : {
+            "max" : {
+              "type" : "integer"
+            }
+          },
+          "required" : [ "max" ]
+        },
+        "jwtValidators" : {
+          "type" : "object",
+          "properties" : {
+            "max" : {
+              "type" : "integer"
+            }
+          },
+          "required" : [ "max" ]
+        },
+        "rateplans" : {
+          "type" : "object",
+          "properties" : {
+            "max" : {
+              "type" : "integer"
+            }
+          },
+          "required" : [ "max" ]
+        }
+      },
+      "required" : [ "apikeys", "jwtValidators", "rateplans" ]
+    },
+    "resthooks" : {
+      "type" : "object",
+      "properties" : {
+        "applications" : {
+          "$ref" : "#/$defs/ApplicationPolicy"
+        },
+        "events" : {
+          "type" : "object",
+          "properties" : {
+            "max" : {
+              "type" : "integer"
+            }
+          },
+          "required" : [ "max" ]
+        },
+        "subscriptions" : {
+          "type" : "object",
+          "properties" : {
+            "max" : {
+              "type" : "integer"
+            }
+          },
+          "required" : [ "max" ]
+        },
+        "topics" : {
+          "type" : "object",
+          "properties" : {
+            "max" : {
+              "type" : "integer"
+            }
+          },
+          "required" : [ "max" ]
+        }
+      },
+      "required" : [ "applications", "events", "subscriptions", "topics" ]
+    },
+    "toggles" : {
+      "type" : "object",
+      "properties" : {
+        "applications" : {
+          "$ref" : "#/$defs/ApplicationPolicy"
+        },
+        "features" : {
+          "type" : "object",
+          "properties" : {
+            "max" : {
+              "type" : "integer"
+            }
+          },
+          "required" : [ "max" ]
+        },
+        "releases" : {
+          "type" : "object",
+          "properties" : {
+            "max" : {
+              "type" : "integer"
+            }
+          },
+          "required" : [ "max" ]
+        },
+        "stages" : {
+          "type" : "object",
+          "properties" : {
+            "max" : {
+              "type" : "integer"
+            }
+          },
+          "required" : [ "max" ]
+        },
+        "strategies" : {
+          "type" : "object",
+          "properties" : {
+            "max" : {
+              "type" : "integer"
+            }
+          },
+          "required" : [ "max" ]
+        }
+      },
+      "required" : [ "applications", "features", "releases", "stages", "strategies" ]
+    },
+    "type" : {
+      "type" : "string",
+      "enum" : [ "TRIAL", "DEVELOPER", "ENTERPRISE", "CUSTOM" ]
+    },
+    "updatedAt" : {
+      "type" : "string",
+      "format" : "date-time"
+    },
+    "users" : {
+      "type" : "object",
+      "properties" : {
+        "groups" : {
+          "type" : "object",
+          "properties" : {
+            "max" : {
+              "type" : "integer"
+            }
+          },
+          "required" : [ "max" ]
+        },
+        "max" : {
+          "type" : "integer"
+        }
+      },
+      "required" : [ "groups", "max" ]
+    },
+    "workflows" : {
+      "type" : "object",
+      "properties" : {
+        "applications" : {
+          "$ref" : "#/$defs/ApplicationPolicy"
+        },
+        "pipelines" : {
+          "type" : "object",
+          "properties" : {
+            "max" : {
+              "type" : "integer"
+            }
+          },
+          "required" : [ "max" ]
+        },
+        "tasks" : {
+          "type" : "object",
+          "properties" : {
+            "max" : {
+              "type" : "integer"
+            }
+          },
+          "required" : [ "max" ]
+        },
+        "triggers" : {
+          "type" : "object",
+          "properties" : {
+            "max" : {
+              "type" : "integer"
+            }
+          },
+          "required" : [ "max" ]
+        }
+      },
+      "required" : [ "applications", "pipelines", "tasks", "triggers" ]
+    }
+  },
+  "required" : [ "accounts", "expiresOn", "organization", "ratelimits", "resthooks", "toggles", "type", "users", "workflows" ],
+  "title" : "License",
+  "description" : "JSON Schema definition for License"
+}

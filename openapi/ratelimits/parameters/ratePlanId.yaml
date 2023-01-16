@@ -1,0 +1,6 @@
+name: rateplanId
+in: path
+description: The rate plan ID (either UUID or slug)
+required: true
+schema:
+  type: string

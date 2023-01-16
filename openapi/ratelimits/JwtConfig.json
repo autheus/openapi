@@ -1,0 +1,82 @@
+{
+  "type" : "object",
+  "properties" : {
+    "account" : {
+      "$ref" : "../AccountReference.json"
+    },
+    "allowedAudiences" : {
+      "description" : "OPTIONAL. An array of audience strings that are allowed in incoming Java Web Tokens. These strings appear in the JWT as the value of the 'aud' claim. NOTE: if the JWT contains an audience claim, it is validated, thus, entries here are required.",
+      "minItems" : 0,
+      "maxItems" : 25,
+      "type" : "array",
+      "items" : {
+        "type" : "string"
+      }
+    },
+    "allowedIssuers" : {
+      "description" : "REQUIRED. An array of token issuers that are allowed in incoming Java Web Tokens. Issuers are associated with the 'iss' claim in JWTs and must expose a Java Web Key (JWKS) endpoint in order to validate JWT signatures.",
+      "minItems" : 1,
+      "maxItems" : 25,
+      "type" : "array",
+      "items" : {
+        "type" : "object",
+        "properties" : {
+          "jwks" : {
+            "description" : "REQUIRED. The URL where this issuer exposes its JWKS endpoint for JWT signature validation.",
+            "$ref" : "../UrlReference.json"
+          },
+          "value" : {
+            "description" : "REQUIRED. The expected string that appears as the value of 'iss' claim in incoming Java Web Tokens.",
+            "type" : "string",
+            "maxLength" : 1024
+          }
+        },
+        "required" : [ "jwks", "value" ]
+      }
+    },
+    "createdAt" : {
+      "description" : "READ-ONLY. A system-generated timestamp of when the API key was first created.",
+      "type" : "string",
+      "format" : "date-time"
+    },
+    "description" : {
+      "description" : "OPTIONAL. An optional description of the JWT Verifier.",
+      "type" : "string",
+      "maxLength" : 1024
+    },
+    "id" : {
+      "description" : "READ-ONLY. The system-generated identifier for the API key. Can never be changed (it is immutable).",
+      "type" : "string",
+      "format" : "uuid"
+    },
+    "name" : {
+      "description": "REQUIRED. A human-friendly name for the JWT Verifier.",
+      "type" : "string",
+      "maxLength" : 256
+    },
+    "slug" : {
+      "description" : "REQUIRED. A url-safe name for the JWT Verifier. It can contain lower-case alphanumeric characters, the numbers zero through nine, '_' (underscore) and '-' (dash) characters. This property value is used for all rate-limiting requests. If a value is not provided on creation, a slug-ified version of the 'name' property is generated.",
+      "type" : "string",
+      "maxLength" : 256,
+      "pattern" : "[a-z_\\-0-9]+"
+    },
+    "updatedAt" : {
+      "description" : "READ-ONLY. A system-generated timestamp of when the API key was last updated.",
+      "type" : "string",
+      "format" : "date-time"
+    },
+    "verifiedClaims" : {
+      "description" : "OPTIONAL. An optional map of name/value pairs of claims (and their respective values) from the JWT that must be verified.",
+      "type" : "object",
+      "maxLength" : 256,
+      "minItems" : 0,
+      "maxItems" : 25,
+      "additionalProperties" : {
+        "type" : "string"
+      }
+    }
+  },
+  "required" : [ "account", "allowedIssuers", "name", "slug" ],
+  "title" : "JwtVerifier",
+  "description" : "JwtVerifier defines parameters to verify a Java Web Token (JWT). See https://jwtpal.com for more detailed information on JWT verification and the values encoded in Java Web Tokens."
+}

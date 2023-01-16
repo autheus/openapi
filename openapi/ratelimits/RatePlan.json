@@ -1,0 +1,81 @@
+{
+  "type" : "object",
+  "properties" : {
+    "account" : {
+      "$ref" : "../AccountReference.json"
+    },
+    "createdAt" : {
+	  "description" : "READ-ONLY. A system-generated timestamp of when the API key was first created. Read-only.",
+      "type" : "string",
+      "format" : "date-time"
+    },
+    "description" : {
+      "description" : "OPTIONAL. The system-generated identifier for the rate plan. Can never be changed (it is immutable). Read-only.",
+      "type" : "string",
+      "maxLength" : 1024
+    },
+    "distribution" : {
+      "description" : "Indicates how broadly the rate-limit metrics are broadcast. Currently rate-limits are only enforcable within the region API calls occur.",
+      "type" : "string",
+      "enum" : [ "LOCAL" ]
+    },
+    "id" : {
+      "description" : "READ-ONLY. The system-generated identifier for the rate plan. Can never be changed (it is immutable). Read-only.",
+      "type" : "string",
+      "format" : "uuid"
+    },
+    "name" : {
+      "description": "REQUIRED. A human-friendly name for the rate plan.",
+      "type" : "string",
+      "maxLength" : 256
+    },
+    "quota" : {
+      "description" : "OPTIONAL. A quota defines a fixed-time window rate-limit over an hour, day, week or month. Quota management helps enforce SLAs or license limits for API consumers by limiting the number of API requests consumers can make in a longer time interval. Note that quotas are subject to spikes at the edges of the window, as the counter resets. Quota should be used in conjunction with a throttle to shape traffic patterns. One or both of 'quota' and 'throttle' are required on creation.",
+      "type" : "object",
+      "properties" : {
+        "limit" : {
+          "description" : "The total number of request to allow during the given time period (hour, day, week or month).",
+          "type" : "integer"
+        },
+        "period" : {
+          "type" : "string",
+          "enum" : [ "HOUR", "DAY", "WEEK", "MONTH" ]
+        }
+      },
+      "required" : [ "limit", "period" ]
+    },
+    "slug" : {
+      "description" : "REQUIRED. A url-safe name for the rate plan. It can contain lower-case alphanumeric characters, the numbers zero through nine, '_' (underscore) and '-' (dash) characters. This property value is used for all rate-limiting requests. If a value is not provided on creation, a slug-ified version of the 'name' property is used.",
+      "type" : "string",
+      "maxLength" : 256,
+      "pattern" : "[a-z_\\-0-9]+"
+    },
+    "throttle" : {
+      "description" : "OPTIONAL. A throttle defines a rolling window of budgeted usage for traffic-shaping over a shorter time period of hours, minutes, or seconds. Throttling uses the token bucket algorithm to shape request traffic and protect back-end resources from overload during spikes. See: https://en.wikipedia.org/wiki/Token_bucket. One or both of 'throttle' and 'quota' are required on creation.",
+      "type" : "object",
+      "properties" : {
+        "burst" : {
+          "description" : "The overall capacity of the token bucket.",
+          "type" : "integer"
+        },
+        "period" : {
+          "type" : "string",
+          "enum" : [ "HOUR", "MINUTE", "SECOND" ]
+        },
+        "rate" : {
+          "description" : "The rate at which tokens are added to the bucket. This is the average (mean) requests-per-second (RPS) allowed over time.",
+          "type" : "integer"
+        }
+      },
+      "required" : [ "burst", "period", "rate" ]
+    },
+    "updatedAt" : {
+      "description" : "READ-ONLY. A system-generated timestamp of when the API key was last updated. Read-only",
+      "type" : "string",
+      "format" : "date-time"
+    }
+  },
+  "required" : [ "name", "slug" ],
+  "title" : "RatePlan",
+  "description" : "A RatePlan describes a quota and/or throttling policy configuration that can be applied to both static or dynamic API keys in a rate-limiting decision request. One or both of 'quota' and 'throttle' are required on creation of a RatePlan."
+}

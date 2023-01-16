@@ -1,0 +1,14 @@
+{
+    "type" : "object",
+    "properties" : {
+        "_embedded" : {
+            "type" : "object",
+            "properties" : {
+                "rateplans" : {
+                    "type" : "array",
+                    "items" : {"$ref" : "RatePlan.json"}
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,42 @@
+{
+  "type" : "object",
+  "properties" : {
+    "apikeys" : {
+      "description" : "REQUIRED. An array of API Key Rules defining the API keys and associated rate plans to enforce rate limits. The API key values may be expressions that extract data from the incoming request.",
+      "minItems" : 1,
+      "maxItems" : 25,
+      "type" : "array",
+      "items" : {
+        "$ref" : "ApiKeyRuleDefinitionDto.json",
+        "minItems" : 1,
+        "maxItems" : 25
+      }
+    },
+    "authorization" : {
+      "description" : "OPTIONAL. An authorization rule defining how incoming requests are validated for authorization, either API key or JWT Bearer token.",
+      "$ref" : "AuthorizationRuleDefinitionDto.json"
+    },
+    "description" : {
+      "description" : "OPTIONAL. An optional description of the policy.",
+      "type" : "string",
+      "maxLength" : 1024
+    },
+    "name" : {
+      "description": "REQUIRED. A human-friendly name for the policy.",
+      "type" : "string",
+      "maxLength" : 256
+    },
+    "onError" : {
+      "description" : "OPTIONAL. An optional statement containing configuration for runtime error conditions.",
+      "$ref" : "ErrorStatementDefinitionDto.json"
+    },
+    "slug" : {
+      "description" : "REQUIRED. A url-safe name for the policy. It can contain lower-case alphanumeric characters, the numbers zero through nine, '_' (underscore) and '-' (dash) characters. If a value is not provided on creation, a slug-ified version of the 'name' property is generated.",
+      "type" : "string",
+      "maxLength" : 256,
+      "pattern" : "[a-z_\\-0-9]+"
+    }
+  },
+  "title" : "PolicyDefinitionDto",
+  "description" : "Definition of a runtime rate-limiting policy and, optionally, authorization validation. For partial update (PATCH) use cases, all properties are optional: any provided properties will be merged with the previous version of the policy definition."
+}

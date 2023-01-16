@@ -1,0 +1,14 @@
+{
+    "type" : "object",
+    "properties" : {
+        "_embedded" : {
+            "type" : "object",
+            "properties" : {
+                "apikeys" : {
+                    "type" : "array",
+                    "items" : {"$ref" : "ApiKey.json"}
+                }
+            }
+        }
+    }
+}

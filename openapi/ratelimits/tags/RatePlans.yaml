@@ -1,0 +1,11 @@
+name: Rate Plans
+description: |
+  Management of individual rate plans.
+
+  A RatePlan defines quota and/or throttling (aka spike arrest) configuration that can be applied to both static or dynamic API keys during a rate-limiting decision request.
+
+  For example, there may be rate plans for tenants, applications, devices, all with different quota and throttling characteristics.
+
+  Each Rate Plan can have either or both of 'quota' and 'throttle':
+  - Quota is a fixed-time window rate-limit over an hour, day, week or month. Quota applies SLAs or license limits to API consumers.
+  - Throttle is a rolling window of budgeted usage for traffic-shaping over a shorter time period of hours, minutes, or seconds.

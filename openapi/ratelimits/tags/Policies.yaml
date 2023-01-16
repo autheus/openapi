@@ -1,0 +1,30 @@
+name: Policies
+description: |
+  Management of Rate-Limting Policies.
+
+  A Policy stitches API keys, rate plans and JWT verifiers together into an enforcable set of rules. It is used at run-time to enforce rate-limits and, optionally, authorization.
+
+  Each category of API call in your system will have different Policies to enforce SLAs.
+
+  A Policy is made up of the following rules or statements:
+    * Authorization Statement (see below)
+      - Only included if authorization enforcement at the edge is desired.
+      - An Authorization Statement can enforce Static API Key or OAuth2 or OpenID Connect (OIDC) JWT verification authorization.
+    * API Key Statements
+      - An array of Static and/or Dynamic API Keys on which to enforce rate-limiting (via Rate Plans).
+      - Dynamic API Keys are associated to a Rate Plan in the API Key Statement.
+      - Static API Keys do not include a Rate Plan in the statment.
+      - API Key values can be extracted from the incoming request context using script snippets.
+      - One or more API Key Statements must be present in the Policy.
+    * Error Handling Statement
+  # Authorization Statements
+    - By including an Authorization Statement in a rate-limiting Policy, the Policy can perform request authorization by validating an API Key or a Java Web Token (JWT).
+    * API Key Authorization
+        - Static API Keys can be validated in requests to authorize API consumers by using scripting in the Policy to extract the API key from the request.
+        - If the Static API Key exists, the consumer is assumed to be authorized.
+        - Not as secure as using JWT authorization (below).
+    * Java Web Token Authorization
+        - Configuring a JWT Verifier and including it in a rate-limiting Policy enables issuer, audience, expiration and signature validation for incoming requests.
+        - Validates tokens at the edge so invalid tokens don't load up back-end services.
+        - Script snippets can be included in issuer and audience configuration to enable dynamic validation with values substituted from the incoming request context
+        (e.g. a multi-tenant authorization server).

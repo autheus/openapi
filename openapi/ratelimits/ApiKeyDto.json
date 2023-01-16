@@ -1,0 +1,35 @@
+{
+  "type" : "object",
+  "properties" : {
+    "description" : {
+      "description" : "OPTIONAL. An optional description of the API key.",
+      "type" : "string",
+      "maxLength" : 1024
+    },
+    "key" : {
+      "description" : "REQUIRED. The user-provided value for the API key. It can contain alphanumeric characters, the numbers zero through nine, '_' (underscore) and '-' (dash) characters. This property value is used for all rate-limiting requests.",
+      "type" : "string",
+      "maxLength" : 256,
+      "pattern" : "[a-z_\\-0-9]+"
+    },
+    "rateplan" : {
+      "description" : "REQUIRED. This is a reference to the associated rate plan. Either the 'id' or 'slug' property is required (not both).",
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "description" : "The immutable identifier of the associated rate plan.",
+          "type" : "string",
+          "format" : "uuid"
+        },
+        "slug" : {
+          "description" : "The url-safe name of the associated rate plan.",
+          "type" : "string",
+          "maxLength" : 256,
+          "pattern" : "[a-z_\\-0-9]+"
+        }
+      }
+    }
+  },
+  "title" : "ApiKeyDto",
+  "description" : "The configuration properties needed to create or partially-update a static API key definition. For partial update (PATCH) use cases, all properties are optional: any provided properties will be merged with the previous version of the API key definition."
+}

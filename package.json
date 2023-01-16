@@ -1,8 +1,8 @@
 {
-  "name": "acme-api",
+  "name": "autheus-api",
   "version": "1.0.0",
   "dependencies": {
-    "@redocly/cli": "1.0.0-beta.120"
+    "@redocly/cli": "1.0.0-beta.114"
   },
   "private": true,
   "scripts": {

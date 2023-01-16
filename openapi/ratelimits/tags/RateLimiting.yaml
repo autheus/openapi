@@ -1,0 +1,10 @@
+name: Rate Limiting
+description: |
+  Rate-limiting oriented requests.
+
+  An API gateway or other application calls the `/limits` endpoint to see if the request is allowed or denied.
+  - The response returns a 'decision' property containing `ALLOW` or `DENY` that the application or API gateway uses to enforce the decision.
+  - A rate-limiting request includes data from the original request such as headers and other parameters (maybe even from the body). This
+  becomes the request context from which Policy script snippets can extract values.
+  - It also includes the Policy (either the `slug` or `ID`) that should be applied to the request. __NOTE:__ Using the `ID` is more performant than using the `slug`.
+  - The execution of the Policy causes counters to be maintained in the system tracking API Key counters against their associated Rate Plans.

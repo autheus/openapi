@@ -1,0 +1,14 @@
+{
+    "type" : "object",
+    "properties" : {
+        "_embedded" : {
+            "type" : "object",
+            "properties" : {
+                "jwtVerifiers" : {
+                    "type" : "array",
+                    "items" : {"$ref" : "JwtConfig.json"}
+                }
+            }
+        }
+    }
+}

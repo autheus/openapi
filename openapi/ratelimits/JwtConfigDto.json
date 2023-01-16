@@ -1,0 +1,60 @@
+{
+  "type" : "object",
+  "properties" : {
+    "allowedAudiences" : {
+      "description" : "OPTIONAL. An array of audience strings that are allowed in incoming Java Web Tokens. These strings appear in the JWT as the value of the 'aud' claim. NOTE: if the JWT contains an audience claim, it is validated, thus, entries here are required.",
+      "minItems" : 0,
+      "maxItems" : 25,
+      "type" : "array",
+      "items" : {
+        "type" : "string"
+      }
+    },
+    "allowedIssuers" : {
+      "description" : "REQUIRED. An array of token issuers that are allowed in incoming Java Web Tokens. Issuers are associated with the 'iss' claim in JWTs and must expose a Java Web Key (JWKS) endpoint in order to validate JWT signatures.",
+      "minItems" : 1,
+      "maxItems" : 25,
+      "type" : "array",
+      "items" : {
+        "type" : "object",
+        "properties" : {
+          "jwks" : {
+            "description" : "REQUIRED. The URL where this issuer exposes its JWKS endpoint for JWT signature validation.",
+            "$ref" : "../UrlReference.json"
+          },
+          "value" : {
+            "description" : "REQUIRED. The expected string that appears as the value of 'iss' claim in incoming Java Web Tokens.",
+            "type" : "string",
+            "maxLength" : 1024
+          }
+        },
+        "required" : [ "jwks", "value" ]
+      }
+    },
+    "description" : {
+      "description" : "OPTIONAL. An optional description of the JWT Verifier.",
+      "type" : "string",
+      "maxLength" : 1024
+    },
+    "name" : {
+      "description": "REQUIRED. A human-friendly name for the JWT Verifier.",
+      "type" : "string",
+      "maxLength" : 256
+    },
+    "slug" : {
+      "type" : "string"
+    },
+    "verifiedClaims" : {
+      "description" : "OPTIONAL. An optional map of name/value pairs of claims (and their respective values) from the JWT that must be verified.",
+      "type" : "object",
+      "maxLength" : 256,
+      "minItems" : 0,
+      "maxItems" : 25,
+      "additionalProperties" : {
+        "type" : "string"
+      }
+    }
+  },
+  "title" : "JwtConfigDto",
+  "description" : "The configuration properties needed to create or partially-update a JWT verifier configuration. For partial update use cases, all properties are optional: any provided properties will be merged with the previous version of the JWT verifier configuration."
+}

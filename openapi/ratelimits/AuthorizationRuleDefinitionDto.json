@@ -1,0 +1,35 @@
+{
+  "type" : "object",
+  "properties" : {
+    "parameter" : {
+      "type" : "string",
+      "maxLength" : 256,
+      "description" : "For 'API_KEY' authorization, this property contains the expression to extract the API key from the incoming request."
+    },
+    "type" : {
+      "type" : "string",
+      "enum" : [ "API_KEY", "JWT" ],
+      "description" : "Specifies the type of authorization to apply on incoming requests. API_KEY verifies the incoming API key against static API key in the same account. JWT validates the signature, issuer, audience of a JWT Bearer token from the request (in the 'authorization' header), plus other claims as specified."
+    },
+    "verifier" : {
+      "type" : "object",
+      "description" : "For JWT authorization types, specifies the JWT verifier to use when validating incoming tokens. Either the 'id' or 'slug' are required, but not both.",
+      "properties" : {
+        "id" : {
+          "description" : "The immutable identifier of the associated JWT verifier.",
+          "type" : "string",
+          "format" : "uuid"
+        },
+        "slug" : {
+          "description" : "The url-safe name of the associated JWT verifier.",
+          "type" : "string",
+          "maxLength" : 256,
+          "pattern" : "[a-z_\\-0-9]+"
+        }
+      }
+    }
+  },
+  "required" : [ "type" ],
+  "title" : "AuthorizationRuleDefinitionDto",
+  "description" : "An Authorization Rule is an OPTIONAL policy statement that defines how incoming requests will be authorized. If authorization is not performed at this level, an Authorization Rule is not required."
+}

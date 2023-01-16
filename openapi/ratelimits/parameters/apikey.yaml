@@ -1,0 +1,6 @@
+name: apikey
+in: path
+description: The API key (either UUID or key value)
+required: true
+schema:
+  type: string

@@ -1,0 +1,47 @@
+get:
+  tags:
+    - Policies
+  summary: List all the rate-limiting policy defininitions (paginated)
+  operationId: 'Policy::readAll'
+  responses:
+    '200':
+      description: An array of policy definitions and associated configuration
+      content:
+        application/json:
+          schema:
+            $ref: ../PolicyDefinitions.json
+    '401':
+      $ref: ../../responses/401Unauthorized.yaml
+    '403':
+      $ref: ../../responses/403Forbidden.yaml
+post:
+  tags:
+    - Policies
+  summary: Create a new rate-limiting policy definition
+  operationId: 'Policy::create'
+  requestBody:
+    description: Policy definition
+    content:
+      application/json:
+        schema:
+          $ref: ../PolicyDefinitionDto.json
+    required: true
+  responses:
+    '201':
+      description: >-
+        Successful policy creation. Returns the newly-created policy definition
+      content:
+        application/json:
+          schema:
+            $ref: ../PolicyDefinition.json
+    '400':
+      $ref: ../../responses/400BadRequest.yaml
+    '401':
+      $ref: ../../responses/401Unauthorized.yaml
+    '403':
+      $ref: ../../responses/403Forbidden.yaml
+    '404':
+      $ref: ../../responses/404NotFound.yaml
+    '409':
+      $ref: ../../responses/409Conflict.yaml
+  

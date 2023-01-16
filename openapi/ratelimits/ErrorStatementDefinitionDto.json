@@ -1,0 +1,29 @@
+{
+  "type" : "object",
+  "properties" : {
+    "decision" : {
+      "description" : "OPTIONAL. This setting defines what decision is returned on runtime policy errors. Setting 'decision' to ALLOW allows all failed requests to continue. Use with caution. The default is DENY.",
+      "type" : "string",
+      "enum" : [ "ALLOW", "DENY" ]
+    },
+    "usePlan" : {
+      "description" : "OPTIONAL. When a static API key is specified in the policy, but an API key in the request does not have an associated rate plan, this rate plan is used instead as a 'default'.",
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "description" : "The immutable identifier of the associated rate plan.",
+          "type" : "string",
+          "format" : "uuid"
+        },
+        "slug" : {
+          "description" : "The url-safe name of the associated rate plan.",
+          "type" : "string",
+          "maxLength" : 256,
+          "pattern" : "[a-z_\\-0-9]+"
+        }
+      }
+    }
+  },
+  "title" : "ErrorStatementDefinitionDto",
+  "description" : "An Error Statement is an OPTIONAL policy statement that defines settings for runtime policy error conditions."
+}

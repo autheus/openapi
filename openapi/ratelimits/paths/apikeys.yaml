@@ -1,0 +1,57 @@
+get:
+  tags:
+    - API Keys
+  summary: List all the static API keys (paginated)
+  operationId: 'ApiKey::readAll'
+  parameters:
+    - name: expand
+      in: query
+      description: Expand referenced resources. Valid values are 'rateplan'
+      required: false
+      allowEmptyValue: false
+      schema:
+        type: string 
+  responses:
+    '200':
+      description: An array of API keys and associated metadata
+      content:
+        application/json:
+          schema:
+            $ref: ../ApiKeys.json
+    '401':
+      $ref: ../../responses/401Unauthorized.yaml
+    '403':
+      $ref: ../../responses/403Forbidden.yaml
+  security:
+    - OAuth2: []
+post:
+  tags:
+    - API Keys
+  summary: >-
+    Create a new static API key, associating it to a (pre-existing) rate
+    plan
+  operationId: 'ApiKey::create'
+  requestBody:
+    description: API key metadata
+    content:
+      application/json:
+        schema:
+          $ref: ../ApiKeyDto.json
+    required: true
+  responses:
+    '201':
+      description: >-
+        Successful API key creation. Returns the newly-created API key
+        metadata
+      content:
+        application/json:
+          schema:
+            $ref: ../ApiKey.json
+    '400':
+      $ref: ../../responses/400BadRequest.yaml
+    '401':
+      $ref: ../../responses/401Unauthorized.yaml
+    '403':
+      $ref: ../../responses/403Forbidden.yaml
+    '404':
+      $ref: ../../responses/404NotFound.yaml
