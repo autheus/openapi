@@ -1,27 +1,30 @@
 {
+  "$schema" : "https://json-schema.org/draft/2020-12/schema",
   "type" : "object",
   "properties" : {
     "account" : {
       "$ref" : "../AccountReference.json"
     },
     "allowedGrantTypes" : {
-      "minItems" : 0,
+      "minItems" : 1,
       "maxItems" : 25,
       "type" : "array",
       "items" : {
         "type" : "string",
         "enum" : [ "AUTHORIZATION_CODE", "PASSWORD", "CLIENT_CREDENTIALS", "REFRESH_TOKEN", "TOKEN_EXCHANGE" ],
-        "minItems" : 0,
+        "minItems" : 1,
         "maxItems" : 25
       }
     },
     "allowedRedirectUrls" : {
+      "minLength" : 1,
       "maxLength" : 1024,
       "minItems" : 0,
       "maxItems" : 1000,
       "type" : "array",
       "items" : {
         "type" : "string",
+        "minLength" : 1,
         "maxLength" : 1024,
         "minItems" : 0,
         "maxItems" : 1000
@@ -29,22 +32,24 @@
     },
     "allowedScopes" : {
       "maxLength" : 256,
-      "minItems" : 0,
+      "minItems" : 1,
       "maxItems" : 1000,
       "type" : "array",
       "items" : {
         "type" : "string",
         "maxLength" : 256,
-        "minItems" : 0,
+        "minItems" : 1,
         "maxItems" : 1000
       }
     },
     "clientSecret" : {
       "type" : "string",
-      "maxLength" : 256
+      "maxLength" : 256,
+      "readOnly" : true
     },
     "createdAt" : {
       "type" : "string",
+      "readOnly" : true,
       "format" : "date-time"
     },
     "description" : {
@@ -53,7 +58,8 @@
     },
     "id" : {
       "type" : "string",
-      "format" : "uuid"
+      "format" : "uuid",
+      "readOnly" : true
     },
     "name" : {
       "type" : "string",
@@ -64,12 +70,28 @@
       "type" : "string",
       "enum" : [ "NONE", "PLAIN", "S256" ]
     },
+    "plainTextSecret" : {
+      "type" : "string",
+      "readOnly" : true
+    },
     "profile" : {
       "type" : "string",
       "enum" : [ "WEB_APPLICATION", "USER_AGENT", "NATIVE" ]
     },
     "shouldAuthorizeGrants" : {
       "type" : "boolean"
+    },
+    "supportedAudiences" : {
+      "maxLength" : 256,
+      "minItems" : 1,
+      "maxItems" : 25,
+      "type" : "array",
+      "items" : {
+        "type" : "string",
+        "maxLength" : 256,
+        "minItems" : 1,
+        "maxItems" : 25
+      }
     },
     "tokenExchangeConfig" : {
       "type" : "object",
@@ -114,10 +136,12 @@
     },
     "updatedAt" : {
       "type" : "string",
+      "readOnly" : true,
       "format" : "date-time"
     }
   },
   "required" : [ "allowedGrantTypes", "name", "profile" ],
+  "$id" : "https://schema.autheus.com/oidc/Client.json",
   "title" : "Client",
   "description" : "The Client resource defines an OAuth2 (or OpenID Connect) application configuration which can be used to acquire access tokens."
 }

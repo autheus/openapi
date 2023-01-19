@@ -1,4 +1,5 @@
 {
+  "$schema" : "https://json-schema.org/draft/2020-12/schema",
   "type" : "object",
   "properties" : {
     "allowedGrantTypes" : {
@@ -56,6 +57,18 @@
     "shouldAuthorizeGrants" : {
       "type" : "boolean"
     },
+    "supportedAudiences" : {
+      "maxLength" : 256,
+      "minItems" : 0,
+      "maxItems" : 25,
+      "type" : "array",
+      "items" : {
+        "type" : "string",
+        "maxLength" : 256,
+        "minItems" : 1,
+        "maxItems" : 25
+      }
+    },
     "tokenExchangeConfig" : {
       "type" : "object",
       "properties" : {
@@ -98,6 +111,7 @@
       "type" : "integer"
     }
   },
+  "$id" : "https://schema.autheus.com/ClientDto.json",
   "title" : "ClientDto",
   "description" : "The Client resource defines an OAuth2 (or OpenID Connect) application configuration which can be used to acquire access tokens."
 }
