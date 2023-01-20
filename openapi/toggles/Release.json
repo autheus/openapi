@@ -2,6 +2,10 @@
   "$schema" : "https://json-schema.org/draft/2020-12/schema",
   "type" : "object",
   "properties" : {
+    "account" : {
+      "$ref" : "../AccountReference.json",
+      "readOnly" : true
+    },
     "createdAt" : {
       "type" : "string",
       "readOnly" : true,
@@ -9,7 +13,7 @@
     },
     "description" : {
       "type" : "string",
-      "maxLength" : 1024
+      "maxLength" : 256
     },
     "extended" : {
       "type" : "object",
@@ -28,30 +32,34 @@
       "type" : "string",
       "maxLength" : 256
     },
-    "organization" : {
-      "type" : "object",
-      "properties" : {
-        "id" : {
-          "type" : "string",
-          "format" : "uuid"
-        }
-      },
-      "required" : [ "id" ],
-      "readOnly" : true
-    },
-    "parent" : {
-      "$ref" : "../AccountReference.json"
-    },
-    "region" : {
-      "type" : "string",
-      "enum" : ["NORTH_AMERICA"]
-    },
     "schema" : {
       "$ref" : "../UrlReference.json"
     },
     "slug" : {
       "type" : "string",
+      "maxLength" : 256,
       "pattern" : "[a-z_\\-0-9]+"
+    },
+    "strategies" : {
+      "minItems" : 0,
+      "maxItems" : 1000,
+      "type" : "array",
+      "items" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "format" : "uuid"
+          },
+          "name" : {
+            "type" : "string",
+            "maxLength" : 256
+          }
+        },
+        "required" : [ "id", "name" ],
+        "minItems" : 0,
+        "maxItems" : 1000
+      }
     },
     "updatedAt" : {
       "type" : "string",
@@ -59,8 +67,8 @@
       "format" : "date-time"
     }
   },
-  "required" : [ "name", "organization", "region", "slug" ],
-  "$id" : "https://schema.autheus.com/tenants/Account.json",
-  "title" : "Account",
-  "description" : "JSON Schema definition for Account"
+  "required" : [ "account", "name", "slug", "strategies" ],
+  "$id" : "https://schema.autheus.com/toggles/Release.json",
+  "title" : "Release",
+  "description" : "JSON Schema definition for Release"
 }

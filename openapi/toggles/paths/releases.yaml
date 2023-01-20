@@ -1,15 +1,15 @@
 get:
   tags:
-    - Client Applications
-  summary: List all the client applications (paginated)
-  operationId: 'Client::readAll'
+    - Releases
+  summary: List all the releases (paginated)
+  operationId: 'Release::readAll'
   responses:
     '200':
-      description: An array of client applications and associated configuration metadata
+      description: An array of releases and associated configuration metadata
       content:
         application/json:
           schema:
-            $ref: ../Clients.json
+            $ref: '../Releases.json'
     '400':
       $ref: ../../responses/400BadRequest.yaml
     '401':
@@ -18,26 +18,26 @@ get:
       $ref: ../../responses/403Forbidden.yaml
 post:
   tags:
-    - Client Applications
+    - Releases
   summary: >-
-    Create a new OAuth2/OIDC client application.
-  operationId: 'Client::create'
+    Create a new release.
+  operationId: 'Release::create'
   requestBody:
-    description: Client application configuration metadata.
+    description: Release configuration metadata.
     content:
       application/json:
         schema:
-          $ref: ../ClientDto.json
+          $ref: ../ReleaseDto.json
     required: true
   responses:
     '201':
       description: >-
-        Successful client application creation. Returns the newly-created client
+        Successful release creation. Returns the newly-created release
         configuration metadata
       content:
         application/json:
           schema:
-            $ref: ../Client.json
+            $ref: ../Release.json
     '400':
       $ref: ../../responses/400BadRequest.yaml
     '401':

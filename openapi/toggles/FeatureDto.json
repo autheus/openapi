@@ -1,0 +1,68 @@
+{
+  "$schema" : "https://json-schema.org/draft/2020-12/schema",
+  "type" : "object",
+  "properties" : {
+    "account" : {
+      "$ref" : "../AccountReference.json",
+      "readOnly" : true
+    },
+    "description" : {
+      "type" : "string",
+      "maxLength" : 1024
+    },
+    "extended" : {
+      "type" : "object",
+      "properties" : {
+        "map" : {
+          "type" : "object"
+        }
+      }
+    },
+    "name" : {
+      "type" : "string",
+      "maxLength" : 256
+    },
+    "release" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "string",
+          "format" : "uuid"
+        }
+      },
+      "required" : [ "id" ]
+    },
+    "schema" : {
+      "$ref" : "../UrlReference.json"
+    },
+    "slug" : {
+      "type" : "string",
+      "maxLength" : 256,
+      "pattern" : "[a-z_\\-0-9]+"
+    },
+    "strategies" : {
+      "minItems" : 0,
+      "maxItems" : 1000,
+      "type" : "array",
+      "items" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "format" : "uuid"
+          },
+          "name" : {
+            "type" : "string",
+            "maxLength" : 256
+          }
+        },
+        "required" : [ "id", "name" ],
+        "minItems" : 0,
+        "maxItems" : 1000
+      }
+    }
+  },
+  "$id" : "https://schema.autheus.com/toggles/FeatureDto.json",
+  "title" : "FeatureDto",
+  "description" : "JSON Schema definition for FeatureDto"
+}

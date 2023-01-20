@@ -1,0 +1,66 @@
+{
+  "$schema" : "https://json-schema.org/draft/2020-12/schema",
+  "type" : "object",
+  "properties" : {
+    "createdAt" : {
+      "type" : "string",
+      "readOnly" : true,
+      "format" : "date-time"
+    },
+    "definitions" : {
+      "minItems" : 0,
+      "maxItems" : 1000,
+      "type" : "array",
+      "items" : {
+        "type" : "object",
+        "properties" : {
+          "description" : {
+            "type" : "string",
+            "maxLength" : 1024
+          },
+          "name" : {
+            "type" : "string",
+            "maxLength" : 256
+          },
+          "required" : {
+            "type" : "boolean"
+          },
+          "type" : {
+            "type" : "string",
+            "enum" : [ "LIST", "PERCENTAGE", "STRING", "USER", "TENANT", "GEO_LOCATION" ]
+          }
+        },
+        "required" : [ "name", "type" ],
+        "minItems" : 0,
+        "maxItems" : 1000
+      }
+    },
+    "description" : {
+      "type" : "string",
+      "maxLength" : 1024
+    },
+    "id" : {
+      "type" : "string",
+      "format" : "uuid",
+      "readOnly" : true
+    },
+    "name" : {
+      "type" : "string",
+      "maxLength" : 256
+    },
+    "slug" : {
+      "type" : "string",
+      "maxLength" : 256,
+      "pattern" : "[a-z_\\-0-9]+"
+    },
+    "updatedAt" : {
+      "type" : "string",
+      "readOnly" : true,
+      "format" : "date-time"
+    }
+  },
+  "required" : [ "name", "slug" ],
+  "$id" : "https://schema.autheus.com/toggles/Strategy.json",
+  "title" : "Strategy",
+  "description" : "JSON Schema definition for Strategy"
+}

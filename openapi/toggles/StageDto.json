@@ -18,22 +18,16 @@
       "type" : "string",
       "maxLength" : 256
     },
-    "parent" : {
-      "type" : "object",
-      "properties" : {
-        "id" : {
-          "type" : "string",
-          "format" : "uuid"
-        }
-      },
-      "required" : [ "id" ]
+    "schema" : {
+      "$ref" : "../UrlReference.json"
     },
     "slug" : {
       "type" : "string",
+      "maxLength" : 256,
       "pattern" : "[a-z_\\-0-9]+"
     }
   },
-  "$id" : "https://schema.autheus.com/OrganizationDto.json",
-  "title" : "OrganizationDto",
-  "description" : "JSON Schema definition for OrganizationDto"
+  "$id" : "https://schema.autheus.com/toggles/StageDto.json",
+  "title" : "StageDto",
+  "description" : "JSON Schema definition for StageDto"
 }

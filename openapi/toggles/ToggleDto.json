@@ -1,0 +1,55 @@
+{
+  "$schema" : "https://json-schema.org/draft/2020-12/schema",
+  "$defs" : {
+    "ReferenceAssignment" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "string",
+          "format" : "uuid"
+        },
+        "slug" : {
+          "type" : "string",
+          "maxLength" : 256
+        }
+      }
+    }
+  },
+  "type" : "object",
+  "properties" : {
+    "enabled" : {
+      "type" : "boolean"
+    },
+    "feature" : {
+      "$ref" : "#/$defs/ReferenceAssignment"
+    },
+    "release" : {
+      "$ref" : "#/$defs/ReferenceAssignment"
+    },
+    "stage" : {
+      "$ref" : "#/$defs/ReferenceAssignment"
+    },
+    "strategies" : {
+      "type" : "array",
+      "items" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "format" : "uuid"
+          },
+          "parameters" : {
+            "type" : "object"
+          },
+          "slug" : {
+            "type" : "string",
+            "maxLength" : 256
+          }
+        }
+      }
+    }
+  },
+  "$id" : "https://schema.autheus.com/toggles/ToggleDto.json",
+  "title" : "ToggleDto",
+  "description" : "JSON Schema definition for ToggleDto"
+}

@@ -1,0 +1,75 @@
+{
+  "$schema" : "https://json-schema.org/draft/2020-12/schema",
+  "$defs" : {
+    "StrategyConfiguration" : {
+      "$ref" : "StrategyConfiguration.json"
+    }
+  },
+  "type" : "object",
+  "properties" : {
+    "description" : {
+      "type" : "string"
+    },
+    "enabled" : {
+      "type" : "boolean"
+    },
+    "id" : {
+      "type" : "string",
+      "format" : "uuid",
+      "readOnly" : true
+    },
+    "name" : {
+      "type" : "string"
+    },
+    "release" : {
+      "type" : "object",
+      "properties" : {
+        "description" : {
+          "type" : "string"
+        },
+        "enabled" : {
+          "type" : "boolean"
+        },
+        "id" : {
+          "type" : "string",
+          "format" : "uuid"
+        },
+        "name" : {
+          "type" : "string"
+        },
+        "slug" : {
+          "type" : "string"
+        },
+        "strategies" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/$defs/StrategyConfiguration"
+          }
+        },
+        "toggleId" : {
+          "type" : "string",
+          "format" : "uuid"
+        }
+      }
+    },
+    "slug" : {
+      "type" : "string"
+    },
+    "stage" : {
+      "$ref" : "StageReference.json"
+    },
+    "strategies" : {
+      "type" : "array",
+      "items" : {
+        "$ref" : "#/$defs/StrategyConfiguration"
+      }
+    },
+    "toggleId" : {
+      "type" : "string",
+      "format" : "uuid"
+    }
+  },
+  "$id" : "https://schema.autheus.com/toggles/StageFeatureToggle.json",
+  "title" : "StageFeatureToggle",
+  "description" : "JSON Schema definition for StageFeatureToggle"
+}

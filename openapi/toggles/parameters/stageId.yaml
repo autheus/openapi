@@ -1,0 +1,6 @@
+name: stageId
+in: path
+description: The UUID or slug of the stage.
+required: true
+schema:
+  type: string

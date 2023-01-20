@@ -2,6 +2,17 @@
   "$schema" : "https://json-schema.org/draft/2020-12/schema",
   "type" : "object",
   "properties" : {
+    "account" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "string",
+          "format" : "uuid"
+        }
+      },
+      "required" : [ "id" ],
+      "readOnly" : true
+    },
     "createdAt" : {
       "type" : "string",
       "readOnly" : true,
@@ -21,14 +32,13 @@
     },
     "id" : {
       "type" : "string",
-      "readOnly" : true,
       "format" : "uuid"
     },
     "name" : {
       "type" : "string",
       "maxLength" : 256
     },
-    "parent" : {
+    "release" : {
       "type" : "object",
       "properties" : {
         "id" : {
@@ -58,7 +68,29 @@
     },
     "slug" : {
       "type" : "string",
+      "maxLength" : 256,
       "pattern" : "[a-z_\\-0-9]+"
+    },
+    "strategies" : {
+      "minItems" : 0,
+      "maxItems" : 1000,
+      "type" : "array",
+      "items" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "format" : "uuid"
+          },
+          "name" : {
+            "type" : "string",
+            "maxLength" : 256
+          }
+        },
+        "required" : [ "id", "name" ],
+        "minItems" : 0,
+        "maxItems" : 1000
+      }
     },
     "updatedAt" : {
       "type" : "string",
@@ -66,8 +98,8 @@
       "format" : "date-time"
     }
   },
-  "required" : [ "name" ],
-  "$id" : "https://schema.autheus.com/tenants/Organization.json",
-  "title" : "Organization",
-  "description" : "JSON Schema definition for Organization"
+  "required" : [ "account", "name", "slug", "strategies" ],
+  "$id" : "https://schema.autheus.com/toggles/Feature.json",
+  "title" : "Feature",
+  "description" : "JSON Schema definition for Feature"
 }

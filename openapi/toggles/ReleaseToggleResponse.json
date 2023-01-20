@@ -1,0 +1,52 @@
+{
+  "$schema" : "https://json-schema.org/draft/2020-12/schema",
+  "type" : "object",
+  "properties" : {
+    "description" : {
+      "type" : "string"
+    },
+    "enabled" : {
+      "type" : "boolean"
+    },
+    "id" : {
+      "type" : "string",
+      "format" : "uuid"
+    },
+    "name" : {
+      "type" : "string"
+    },
+    "slug" : {
+      "type" : "string"
+    },
+    "strategies" : {
+      "type" : "array",
+      "items" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "format" : "uuid"
+          },
+          "name" : {
+            "type" : "string",
+            "maxLength" : 256
+          },
+          "parameters" : {
+            "type" : "object",
+            "maxLength" : 256,
+            "minItems" : 0,
+            "maxItems" : 1000
+          }
+        }
+      }
+    },
+    "toggleId" : {
+      "type" : "string",
+      "format" : "uuid"
+    }
+  },
+  "readOnly": true,
+  "$id" : "https://schema.autheus.com/toggles/ReleaseToggleResponse.json",
+  "title" : "ReleaseToggleResponse",
+  "description" : "JSON Schema definition for ReleaseToggleResponse"
+}

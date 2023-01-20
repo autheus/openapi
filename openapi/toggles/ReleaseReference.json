@@ -1,0 +1,11 @@
+{
+    "type" : "object",
+    "properties" : {
+    "id" : {
+        "type" : "string",
+        "format" : "uuid"
+    },
+    "required" : [ "id" ],
+    "title" : "ReleaseReference",
+    "description" : "This is a reference to a Release resource."  
+}

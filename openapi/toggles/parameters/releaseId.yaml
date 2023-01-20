@@ -1,0 +1,6 @@
+name: releaseId
+in: path
+description: The UUID or slug of the release.
+required: true
+schema:
+  type: string

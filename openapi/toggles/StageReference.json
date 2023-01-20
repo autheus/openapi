@@ -1,0 +1,16 @@
+{
+    "type" : "object",
+    "properties" : {
+    "id" : {
+        "type" : "string",
+        "format" : "uuid"
+    },
+    "name" : {
+        "type" : "string",
+        "maxLength" : 256
+      }
+    },
+    "required" : [ "id", "name" ],
+    "title" : "StageReference",
+    "description" : "This is a reference to a Stage resource."  
+}

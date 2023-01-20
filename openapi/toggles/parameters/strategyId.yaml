@@ -1,0 +1,6 @@
+name: strategyId
+in: path
+description: The UUID or slug of the strategy.
+required: true
+schema:
+  type: string

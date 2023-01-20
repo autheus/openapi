@@ -1,6 +1,5 @@
 {
-  "$id" : "https://schema.autheus.com/oidc/Client.json",
-  "$schema" : "https://json-schema.org/draft/2019-09/schema",
+  "$schema" : "https://json-schema.org/draft/2020-12/schema",
   "$defs" : {
     "ApplicationPolicy" : {
       "type" : "object",
@@ -63,17 +62,44 @@
     },
     "createdAt" : {
       "type" : "string",
+      "readOnly" : true,
       "format" : "date-time"
     },
     "effectiveOn" : {
-      "type" : "string"
+      "type" : "string",
+      "format" : "date"
     },
     "expiresOn" : {
-      "type" : "string"
+      "type" : "string",
+      "format" : "date"
     },
     "id" : {
       "type" : "string",
       "format" : "uuid"
+    },
+    "links" : {
+      "type" : "object",
+      "properties" : {
+        "maxChanges" : {
+          "type" : "object",
+          "properties" : {
+            "max" : {
+              "type" : "integer"
+            }
+          },
+          "required" : [ "max" ]
+        },
+        "perMonth" : {
+          "type" : "object",
+          "properties" : {
+            "max" : {
+              "type" : "integer"
+            }
+          },
+          "required" : [ "max" ]
+        }
+      },
+      "required" : [ "maxChanges", "perMonth" ]
     },
     "organization" : {
       "type" : "object",
@@ -83,7 +109,8 @@
           "format" : "uuid"
         }
       },
-      "required" : [ "id" ]
+      "required" : [ "id" ],
+      "readOnly" : true
     },
     "ratelimits" : {
       "type" : "object",
@@ -205,6 +232,7 @@
     },
     "updatedAt" : {
       "type" : "string",
+      "readOnly" : true,
       "format" : "date-time"
     },
     "users" : {
@@ -262,7 +290,8 @@
       "required" : [ "applications", "pipelines", "tasks", "triggers" ]
     }
   },
-  "required" : [ "accounts", "expiresOn", "organization", "ratelimits", "resthooks", "toggles", "type", "users", "workflows" ],
+  "required" : [ "accounts", "expiresOn", "links", "organization", "ratelimits", "resthooks", "toggles", "type", "users", "workflows" ],
+  "$id" : "https://schema.autheus.com/tenants/License.json",
   "title" : "License",
   "description" : "JSON Schema definition for License"
 }

@@ -1,0 +1,6 @@
+name: toggleId
+in: path
+description: The UUID or slug of the feature toggle.
+required: true
+schema:
+  type: string

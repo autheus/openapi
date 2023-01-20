@@ -1,4 +1,5 @@
 {
+  "$schema" : "https://json-schema.org/draft/2020-12/schema",
   "type" : "object",
   "properties" : {
     "description" : {
@@ -21,6 +22,7 @@
       "pattern" : "[a-z_\\-0-9]+"
     }
   },
+  "$id" : "https://schema.autheus.com/AccountDto.json",
   "title" : "AccountDto",
   "description" : "JSON Schema definition for AccountDto"
 }

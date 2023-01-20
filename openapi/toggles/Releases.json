@@ -1,0 +1,14 @@
+{
+    "type" : "object",
+    "properties" : {
+        "_embedded" : {
+            "type" : "object",
+            "properties" : {
+                "releases" : {
+                    "type" : "array",
+                    "items" : {"$ref" : "Release.json"}
+                }
+            }
+        }
+    }
+}

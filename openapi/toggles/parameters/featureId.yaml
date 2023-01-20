@@ -1,0 +1,6 @@
+name: featureId
+in: path
+description: The UUID or slug of the feature.
+required: true
+schema:
+  type: string

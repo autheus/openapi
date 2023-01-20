@@ -16,6 +16,7 @@ tags:
   - $ref: ratelimits/tags/RateLimiting.yaml
   - $ref: ratelimits/tags/RateLimitingMetrics.yaml
   - $ref: ratelimits/tags/RatePlans.yaml
+  - $ref: toggles/tags/Releases.yaml
 servers:
   - url: 'https://api.test.autheus.com'
     description: Integration and Test/Staging server
@@ -52,6 +53,10 @@ paths:
     $ref: ratelimits/paths/rateplans_{rateplanId}.yaml
   '/rateplans/{rateplanId}/apikeys':
     $ref: ratelimits/paths/rateplans_{rateplanId}_apikeys.yaml
+  '/releases':
+    $ref: toggles/paths/releases.yaml
+  '/releases/{releaseId}':
+    $ref: toggles/paths/releases_{releaseId}.yaml
 security:
   - OAuth2: []
 components:

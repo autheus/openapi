@@ -2,6 +2,10 @@
   "$schema" : "https://json-schema.org/draft/2020-12/schema",
   "type" : "object",
   "properties" : {
+    "account" : {
+      "$ref" : "../AccountReference.json",
+      "readOnly" : true
+    },
     "createdAt" : {
       "type" : "string",
       "readOnly" : true,
@@ -21,43 +25,19 @@
     },
     "id" : {
       "type" : "string",
-      "readOnly" : true,
-      "format" : "uuid"
+      "format" : "uuid",
+      "readOnly" : true
     },
     "name" : {
       "type" : "string",
       "maxLength" : 256
     },
-    "parent" : {
-      "type" : "object",
-      "properties" : {
-        "id" : {
-          "type" : "string",
-          "format" : "uuid"
-        }
-      },
-      "required" : [ "id" ]
-    },
     "schema" : {
-      "type" : "object",
-      "properties" : {
-        "href" : {
-          "type" : "string",
-          "maxLength" : 1024
-        },
-        "title" : {
-          "type" : "string",
-          "maxLength" : 1024
-        },
-        "type" : {
-          "type" : "string",
-          "maxLength" : 256
-        }
-      },
-      "required" : [ "href" ]
+      "$ref" : "../UrlReference.json"
     },
     "slug" : {
       "type" : "string",
+      "maxLength" : 256,
       "pattern" : "[a-z_\\-0-9]+"
     },
     "updatedAt" : {
@@ -67,7 +47,7 @@
     }
   },
   "required" : [ "name" ],
-  "$id" : "https://schema.autheus.com/tenants/Organization.json",
-  "title" : "Organization",
-  "description" : "JSON Schema definition for Organization"
+  "$id" : "https://schema.autheus.com/toggles/Stage.json",
+  "title" : "Stage",
+  "description" : "JSON Schema definition for Stage"
 }
