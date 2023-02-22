@@ -1,0 +1,29 @@
+{
+  "$schema" : "https://json-schema.org/draft/2020-12/schema",
+  "type" : "object",
+  "properties" : {
+    "account" : {
+      "$ref" : "../AccountReference.json",
+      "readOnly" : true
+    },
+    "authorizers" : {
+      "type" : "object"
+    },
+    "id" : {
+      "type" : "string",
+      "format" : "uuid"
+    },
+    "paths" : {
+      "type" : "object"
+    },
+    "slug" : {
+      "type" : "string",
+      "maxLength" : 256,
+      "pattern" : "[a-z_\\-0-9]+"
+    }
+  },
+  "required" : [ "account", "id", "slug" ],
+  "$id" : "https://schema.autheus.com/ratelimits/PolicySetDefinition.json",
+  "title" : "PolicySetDefinition",
+  "description" : "JSON Schema definition for PolicySetDefinition"
+}

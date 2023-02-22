@@ -1,0 +1,51 @@
+{
+  "$schema" : "https://json-schema.org/draft/2020-12/schema",
+  "type" : "object",
+  "properties" : {
+    "description" : {
+      "type" : "string"
+    },
+    "distribution" : {
+      "type" : "string",
+      "const" : "LOCAL"
+    },
+    "name" : {
+      "type" : "string"
+    },
+    "quota" : {
+      "type" : "object",
+      "properties" : {
+        "limit" : {
+          "type" : "integer"
+        },
+        "period" : {
+          "type" : "string",
+          "enum" : [ "HOUR", "DAY", "WEEK", "MONTH" ]
+        }
+      },
+      "required" : [ "limit", "period" ]
+    },
+    "slug" : {
+      "type" : "string"
+    },
+    "throttle" : {
+      "type" : "object",
+      "properties" : {
+        "burst" : {
+          "type" : "integer"
+        },
+        "period" : {
+          "type" : "string",
+          "enum" : [ "HOUR", "MINUTE", "SECOND" ]
+        },
+        "rate" : {
+          "type" : "integer"
+        }
+      },
+      "required" : [ "burst", "period", "rate" ]
+    }
+  },
+  "$id" : "https://schema.autheus.com/ratelimits/RatePlanDefinitionValues.json",
+  "title" : "RatePlanDefinitionValues",
+  "description" : "JSON Schema definition for RatePlanDefinitionValues"
+}

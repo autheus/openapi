@@ -1,0 +1,43 @@
+{
+  "$schema" : "https://json-schema.org/draft/2020-12/schema",
+  "type" : "object",
+  "properties" : {
+    "account" : {
+      "$ref" : "../AccountReference.json",
+      "readOnly" : true
+    },
+    "description" : {
+      "type" : "string",
+      "maxLength" : 1024
+    },
+    "extended" : {
+      "type" : "object",
+      "properties" : {
+        "map" : {
+          "type" : "object"
+        }
+      }
+    },
+    "schema" : {
+      "type" : "object",
+      "properties" : {
+        "href" : {
+          "type" : "string",
+          "maxLength" : 1024
+        },
+        "title" : {
+          "type" : "string",
+          "maxLength" : 1024
+        },
+        "type" : {
+          "type" : "string",
+          "maxLength" : 256
+        }
+      },
+      "required" : [ "href" ]
+    }
+  },
+  "$id" : "https://schema.autheus.com/ratelimits/InternalApiKeyDto.json",
+  "title" : "InternalApiKeyDto",
+  "description" : "JSON Schema definition for InternalApiKeyDto"
+}

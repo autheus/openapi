@@ -1,0 +1,138 @@
+{
+  "$schema" : "https://json-schema.org/draft/2020-12/schema",
+  "type" : "object",
+  "properties" : {
+    "apikeys" : {
+      "minItems" : 1,
+      "maxItems" : 25,
+      "type" : "array",
+      "items" : {
+        "type" : "object",
+        "properties" : {
+          "key" : {
+            "type" : "string",
+            "maxLength" : 256
+          },
+          "plan" : {
+            "type" : "object",
+            "properties" : {
+              "distribution" : {
+                "type" : "string",
+                "const" : "LOCAL"
+              },
+              "id" : {
+                "type" : "string",
+                "format" : "uuid"
+              },
+              "quota" : {
+                "type" : "object",
+                "properties" : {
+                  "limit" : {
+                    "type" : "integer"
+                  },
+                  "period" : {
+                    "type" : "string",
+                    "enum" : [ "HOUR", "DAY", "WEEK", "MONTH" ]
+                  }
+                },
+                "required" : [ "limit", "period" ]
+              },
+              "throttle" : {
+                "type" : "object",
+                "properties" : {
+                  "burst" : {
+                    "type" : "integer"
+                  },
+                  "period" : {
+                    "type" : "string",
+                    "enum" : [ "HOUR", "MINUTE", "SECOND" ]
+                  },
+                  "rate" : {
+                    "type" : "integer"
+                  }
+                },
+                "required" : [ "burst", "period", "rate" ]
+              }
+            }
+          }
+        },
+        "required" : [ "key" ],
+        "minItems" : 1,
+        "maxItems" : 25
+      }
+    },
+    "authorization" : {
+      "type" : "object",
+      "properties" : {
+        "parameter" : {
+          "type" : "string",
+          "maxLength" : 256
+        },
+        "type" : {
+          "type" : "string",
+          "enum" : [ "API_KEY", "JWT", "BASIC" ]
+        },
+        "verifier" : {
+          "type" : "object",
+          "properties" : {
+            "id" : {
+              "type" : "string",
+              "format" : "uuid"
+            }
+          },
+          "required" : [ "id" ]
+        }
+      },
+      "required" : [ "type" ]
+    },
+    "description" : {
+      "type" : "string",
+      "maxLength" : 1024
+    },
+    "name" : {
+      "type" : "string",
+      "maxLength" : 256
+    },
+    "onError" : {
+      "type" : "object",
+      "properties" : {
+        "decision" : {
+          "type" : "string",
+          "enum" : [ "ALLOW", "DENY", "UNKNOWN" ]
+        },
+        "usePlan" : {
+          "type" : "object",
+          "properties" : {
+            "id" : {
+              "type" : "string",
+              "format" : "uuid"
+            }
+          },
+          "required" : [ "id" ]
+        }
+      }
+    },
+    "ref" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "string",
+          "format" : "uuid"
+        },
+        "slug" : {
+          "type" : "string",
+          "maxLength" : 256
+        }
+      }
+    },
+    "slug" : {
+      "type" : "string",
+      "maxLength" : 256,
+      "pattern" : "[a-z_\\-0-9]+"
+    }
+  },
+  "required" : [ "apikeys", "name", "slug" ],
+  "$id" : "https://schema.autheus.com/ratelimits/PolicyDefinitionOrAssignment.json",
+  "title" : "PolicyDefinitionOrAssignment",
+  "description" : "JSON Schema definition for PolicyDefinitionOrAssignment"
+}

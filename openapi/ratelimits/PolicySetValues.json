@@ -1,0 +1,21 @@
+{
+  "$schema" : "https://json-schema.org/draft/2020-12/schema",
+  "type" : "object",
+  "properties" : {
+    "authorizers" : {
+      "type" : "object"
+    },
+    "paths" : {
+      "type" : "object"
+    },
+    "slug" : {
+      "type" : "string",
+      "maxLength" : 256,
+      "pattern" : "[a-z_\\-0-9]+"
+    }
+  },
+  "required" : [ "slug" ],
+  "$id" : "https://schema.autheus.com/ratelimits/PolicySetValues.json",
+  "title" : "PolicySetValues",
+  "description" : "JSON Schema definition for PolicySetValues"
+}

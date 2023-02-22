@@ -1,0 +1,14 @@
+{
+  "$schema" : "https://json-schema.org/draft/2020-12/schema",
+  "oneOf": [
+    {
+      "$ref" : "RatePlanAssignment.json"
+    },
+    {
+      "$ref" : "InlineRatePlanDefinitionValues.json"
+    }
+  ],
+  "$id" : "https://schema.autheus.com/ratelimits/RatePlanOrAssignment.json",
+  "title" : "RatePlanOrAssignment",
+  "description" : "This object contains either a reference to a pre-defined rate plan (by either UUID or slug) or the details of an inline rate plan which cannot be used in any other API key rules."
+}

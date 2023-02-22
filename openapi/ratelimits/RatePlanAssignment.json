@@ -1,0 +1,16 @@
+{
+  "$schema" : "https://json-schema.org/draft/2020-12/schema",
+  "type" : "object",
+  "properties" : {
+    "id" : {
+      "type" : "string",
+      "format" : "uuid"
+    },
+    "slug" : {
+      "type" : "string"
+    }
+  },
+  "$id" : "https://schema.autheus.com/ratelimits/RatePlanAssignment.json",
+  "title" : "RatePlanAssignment",
+  "description" : "An reference to a pre-defined rate plan by either UUID or slug."
+}

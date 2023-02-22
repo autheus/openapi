@@ -1,0 +1,42 @@
+{
+  "$schema" : "https://json-schema.org/draft/2020-12/schema",
+  "type" : "object",
+  "properties" : {
+    "distribution" : {
+      "type" : "string",
+      "const" : "LOCAL"
+    },
+    "quota" : {
+      "type" : "object",
+      "properties" : {
+        "limit" : {
+          "type" : "integer"
+        },
+        "period" : {
+          "type" : "string",
+          "enum" : [ "HOUR", "DAY", "WEEK", "MONTH" ]
+        }
+      },
+      "required" : [ "limit", "period" ]
+    },
+    "throttle" : {
+      "type" : "object",
+      "properties" : {
+        "burst" : {
+          "type" : "integer"
+        },
+        "period" : {
+          "type" : "string",
+          "enum" : [ "HOUR", "MINUTE", "SECOND" ]
+        },
+        "rate" : {
+          "type" : "integer"
+        }
+      },
+      "required" : [ "burst", "period", "rate" ]
+    }
+  },
+  "$id" : "https://schema.autheus.com/ratelimits/InlineRatePlanDefinitionValues.json",
+  "title" : "InlineRatePlan",
+  "description" : "JSON Schema definition for InlineRatePlanDefinitionValues"
+}
