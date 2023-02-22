@@ -1,4 +1,5 @@
 {
+  "$schema" : "https://json-schema.org/draft/2020-12/schema",
   "type" : "object",
   "properties" : {
     "parameter" : {
@@ -19,22 +20,13 @@
           "description" : "The immutable identifier of the associated JWT verifier.",
           "type" : "string",
           "format" : "uuid"
-        },
-        "name" : {
-          "description": "The human-friendly name of the associated JWT verifier. This property is read-only and simply shows the name of the JWT verifier.",
-          "type" : "string",
-          "maxLength" : 256
-        },
-        "slug" : {
-          "description" : "The url-safe name of the associated JWT verifier.",
-          "type" : "string",
-          "pattern" : "[a-z_\\-0-9]+"
         }
       },
-      "required" : [ "id", "name", "slug" ]
+      "required" : [ "id" ]
     }
   },
   "required" : [ "type" ],
+  "$id" : "https://schema.autheus.com/ratelimits/AuthorizationRuleDefinition.json",
   "title" : "AuthorizationRuleDefinition",
   "description" : "An Authorization Rule is an OPTIONAL policy statement that defines how incoming requests will be authorized. If authorization is not performed at this level, an Authorization Rule is not required."
 }

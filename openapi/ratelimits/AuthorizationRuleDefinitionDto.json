@@ -1,4 +1,5 @@
 {
+  "$schema" : "https://json-schema.org/draft/2020-12/schema",
   "type" : "object",
   "properties" : {
     "parameter" : {
@@ -7,7 +8,7 @@
       "description" : "For 'API_KEY' authorization, this property contains the expression to extract the API key from the incoming request."
     },
     "type" : {
-      "type" : "string",
+        "type" : "string",
       "enum" : [ "API_KEY", "JWT" ],
       "description" : "Specifies the type of authorization to apply on incoming requests. API_KEY verifies the incoming API key against static API key in the same account. JWT validates the signature, issuer, audience of a JWT Bearer token from the request (in the 'authorization' header), plus other claims as specified."
     },
@@ -30,6 +31,7 @@
     }
   },
   "required" : [ "type" ],
+  "$id" : "https://schema.autheus.com/ratelimits/AuthorizationRuleDefinitionDto.json",
   "title" : "AuthorizationRuleDefinitionDto",
   "description" : "An Authorization Rule is an OPTIONAL policy statement that defines how incoming requests will be authorized. If authorization is not performed at this level, an Authorization Rule is not required."
 }

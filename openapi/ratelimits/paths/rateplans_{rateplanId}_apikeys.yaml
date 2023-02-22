@@ -13,6 +13,12 @@ get:
         application/json:
           schema:
             $ref: ../ApiKeys.json
+    '401':
+      $ref: ../../responses/401Unauthorized.yaml
+    '403':
+      $ref: ../../responses/403Forbidden.yaml
+    '404':
+      $ref: ../../responses/404NotFound.yaml
   security:
     - OAuth2: []
 post:
@@ -20,8 +26,7 @@ post:
     - Rate Plans
     - API Keys
   summary: >-
-    Create a new static API key, associating it to a (pre-existing) rate
-    plan
+    Create a new static API key using this rate plan
   operationId: 'RatePlan::createApiKeys'
   requestBody:
     description: API key metadata
@@ -39,3 +44,11 @@ post:
         application/json:
           schema:
             $ref: ../ApiKey.json
+    '400':
+      $ref: ../../responses/400BadRequest.yaml
+    '401':
+      $ref: ../../responses/401Unauthorized.yaml
+    '403':
+      $ref: ../../responses/403Forbidden.yaml
+    '404':
+      $ref: ../../responses/404NotFound.yaml

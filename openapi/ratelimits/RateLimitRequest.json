@@ -1,4 +1,5 @@
 {
+  "$schema" : "https://json-schema.org/draft/2020-12/schema",
   "type" : "object",
   "properties" : {
     "headers" : {
@@ -31,6 +32,7 @@
     }
   },
   "required" : [ "policy" ],
+  "$id" : "https://schema.autheus.com/ratelimits/RateLimitRequest.json",
   "title" : "RateLimitRequest",
   "description" : "Request details for making a rate-limit decision request. The 'headers' and 'parameters' properties become context to the policy at runtime, where expressions in the policy can extract these values (e.g. ${headers.host} retrieves the host header)."
 }

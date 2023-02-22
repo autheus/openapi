@@ -1,15 +1,32 @@
 {
+  "$schema" : "https://json-schema.org/draft/2020-12/schema",
   "type" : "object",
   "properties" : {
+    "account" : {
+      "$ref" : "../AccountReference.json",
+      "readOnly" : true
+    },
+    "createdAt" : {
+	    "description" : "READ-ONLY. A system-generated timestamp of when the API key was first created. Read-only.",
+      "type" : "string",
+      "readOnly" : true,
+      "format" : "date-time"
+    },
     "description" : {
       "description" : "OPTIONAL. The system-generated identifier for the rate plan. Can never be changed (it is immutable). Read-only.",
       "type" : "string",
       "maxLength" : 1024
     },
     "distribution" : {
-      "description" : "Indicates how broadly the plan rate-limits are enforced (and broadcast). Currently, rate-limits are only enforcable within the region the API calls occur (LOCAL).",
+      "description" : "Indicates how broadly the rate-limit metrics are broadcast. Currently rate-limits are only enforcable within the region API calls occur.",
       "type" : "string",
       "enum" : [ "LOCAL" ]
+    },
+    "id" : {
+      "description" : "READ-ONLY. The system-generated identifier for the rate plan. Can never be changed (it is immutable). Read-only.",
+      "type" : "string",
+      "format" : "uuid",
+      "readOnly" : true
     },
     "name" : {
       "description": "REQUIRED. A human-friendly name for the rate plan.",
@@ -22,7 +39,8 @@
       "properties" : {
         "limit" : {
           "description" : "The total number of request to allow during the given time period (hour, day, week or month).",
-          "type" : "integer"
+          "type" : "integer",
+          "minimum" : 0
         },
         "period" : {
           "type" : "string",
@@ -51,12 +69,20 @@
         },
         "rate" : {
           "description" : "The rate at which tokens are added to the bucket. This is the average (mean) requests-per-second (RPS) allowed over time.",
-          "type" : "integer"
+          "type" : "integer",
+          "minimum" : 0
         }
       },
       "required" : [ "burst", "period", "rate" ]
+    },
+    "updatedAt" : {
+      "description" : "READ-ONLY. A system-generated timestamp of when the API key was last updated. Read-only",
+      "type" : "string",
+      "readOnly" : true,
+      "format" : "date-time"
     }
   },
-  "title" : "RatePlanDto",
-  "description" : "A RatePlanDto describes a quota and/or throttling policy configuration that can be applied to both static or dynamic API keys in a rate-limiting decision request. One or both of 'quota' and 'throttle' are required on creation of a RatePlan."
+  "required" : [ "name", "slug" ],
+  "title" : "RatePlan",
+  "description" : "A RatePlan describes a quota and/or throttling policy configuration that can be applied to both static or dynamic API keys in a rate-limiting decision request. One or both of 'quota' and 'throttle' are required on creation of a RatePlan."
 }

@@ -1,4 +1,5 @@
 {
+  "$schema" : "https://json-schema.org/draft/2020-12/schema",
   "type" : "object",
   "properties" : {
     "key" : {
@@ -8,14 +9,11 @@
     },
     "plan" : {
       "description" : "OPTIONAL. Used only for dynamic API keys where the rate plan is assigned at policy runtime, this is a reference to the associated rate plan. Static API keys do not need a rate plan assignment here because they are already assigned to a rate plan. On creation or update, either the 'id' or 'slug' property is required (not both).",
-      "$ref" : "RatePlanReference.json"
-    },
-    "onError" : {
-      "description" : "OPTIONAL. Used only for static API keys when an API key is not valid (not predefined).",
-      "$ref" : "ErrorRuleDefinition.json"
+      "$ref" : "RatePlanOrReference.json"
     }
   },
   "required" : [ "key" ],
+  "$id" : "https://schema.autheus.com/ratelimits/ApiKeyRuleDefinition.json",
   "title" : "ApiKeyRuleDefinition",
   "description" : "An API Key Rule is a core component of a Policy Definition which defines which API keys to apply rate limits to."
 }

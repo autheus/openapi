@@ -1,4 +1,5 @@
 {
+  "$schema" : "https://json-schema.org/draft/2020-12/schema",
   "type" : "object",
   "properties" : {
     "href" : {
@@ -18,6 +19,7 @@
     }
   },
   "required" : [ "href" ],
+  "$id" : "https://schema.autheus.com/ratelimits/UrlReference.json",
   "title" : "UrlReference",
   "description" : "A pointer to a URL-based resource, used in other resources to hold a link to the referenced resource. Only the 'href' property is required."
 }

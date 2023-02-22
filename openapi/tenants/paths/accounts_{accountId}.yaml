@@ -18,6 +18,12 @@ get:
         application/json:
           schema:
             $ref: ../Account.json
+    '401':
+      $ref: ../../responses/401Unauthorized.yaml
+    '403':
+      $ref: ../../responses/403Forbidden.yaml
+    '404':
+      $ref: ../../responses/404NotFound.yaml
 put:
   tags:
     - Accounts
@@ -41,6 +47,16 @@ put:
   responses:
     '204':
       description: No content
+    '400':
+      $ref: ../../responses/400BadRequest.yaml
+    '401':
+      $ref: ../../responses/401Unauthorized.yaml
+    '403':
+      $ref: ../../responses/403Forbidden.yaml
+    '404':
+      $ref: ../../responses/404NotFound.yaml
+    '409':
+      $ref: ../../responses/409Conflict.yaml
 delete:
   tags:
     - Accounts
@@ -57,6 +73,12 @@ delete:
   responses:
     '204':
       description: No content
+    '401':
+      $ref: ../../responses/401Unauthorized.yaml
+    '403':
+      $ref: ../../responses/403Forbidden.yaml
+    '404':
+      $ref: ../../responses/404NotFound.yaml
 patch:
   tags:
     - Accounts
@@ -89,3 +111,13 @@ patch:
         application/json:
           schema:
             $ref: ../Account.json
+    '400':
+      $ref: ../../responses/400BadRequest.yaml
+    '401':
+      $ref: ../../responses/401Unauthorized.yaml
+    '403':
+      $ref: ../../responses/403Forbidden.yaml
+    '404':
+      $ref: ../../responses/404NotFound.yaml
+    '409':
+      $ref: ../../responses/409Conflict.yaml

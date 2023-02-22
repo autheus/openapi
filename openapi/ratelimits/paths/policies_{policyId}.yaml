@@ -12,6 +12,12 @@ get:
         application/json:
           schema:
             $ref: ../PolicyDefinition.json
+    '401':
+      $ref: ../../responses/401Unauthorized.yaml
+    '403':
+      $ref: ../../responses/403Forbidden.yaml
+    '404':
+      $ref: ../../responses/404NotFound.yaml
   security:
     - OAuth2: []
 put:
@@ -29,6 +35,16 @@ put:
   responses:
     '204':
       description: No content
+    '400':
+      $ref: ../../responses/400BadRequest.yaml
+    '401':
+      $ref: ../../responses/401Unauthorized.yaml
+    '403':
+      $ref: ../../responses/403Forbidden.yaml
+    '404':
+      $ref: ../../responses/404NotFound.yaml
+    '409':
+      $ref: ../../responses/409Conflict.yaml
 delete:
   tags:
     - Policies
@@ -37,6 +53,12 @@ delete:
   responses:
     '204':
       description: No content
+    '401':
+      $ref: ../../responses/401Unauthorized.yaml
+    '403':
+      $ref: ../../responses/403Forbidden.yaml
+    '404':
+      $ref: ../../responses/404NotFound.yaml
 patch:
   tags:
     - Policies
@@ -56,3 +78,13 @@ patch:
         application/json:
           schema:
             $ref: ../PolicyDefinition.json
+    '400':
+      $ref: ../../responses/400BadRequest.yaml
+    '401':
+      $ref: ../../responses/401Unauthorized.yaml
+    '403':
+      $ref: ../../responses/403Forbidden.yaml
+    '404':
+      $ref: ../../responses/404NotFound.yaml
+    '409':
+      $ref: ../../responses/409Conflict.yaml

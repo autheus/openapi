@@ -1,0 +1,15 @@
+{
+  "$schema" : "https://json-schema.org/draft/2020-12/schema",
+  "type" : "object",
+  "properties" : {
+    "id" : {
+      "description" : "The immutable identifier of the associated rate plan.",
+      "type" : "string",
+      "format" : "uuid"
+    }
+  },
+  "required" : [ "id" ],
+  "$id" : "https://schema.autheus.com/ratelimits/RatePlanDefinitionReference.json",
+  "title" : "RatePlanDefinitionReference",
+  "description" : "RatePlanDefinitionReference is a reference to a RatePlan assigned to API keys in order to apply rate limits at runtime. At creation or update time, only the slug or id is required, not both. On read all properties will be populated."
+}

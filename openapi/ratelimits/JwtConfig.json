@@ -1,8 +1,10 @@
 {
+  "$schema" : "https://json-schema.org/draft/2020-12/schema",
   "type" : "object",
   "properties" : {
     "account" : {
-      "$ref" : "../AccountReference.json"
+      "$ref" : "../AccountReference.json",
+      "readOnly" : true
     },
     "allowedAudiences" : {
       "description" : "OPTIONAL. An array of audience strings that are allowed in incoming Java Web Tokens. These strings appear in the JWT as the value of the 'aud' claim. NOTE: if the JWT contains an audience claim, it is validated, thus, entries here are required.",
@@ -10,7 +12,9 @@
       "maxItems" : 25,
       "type" : "array",
       "items" : {
-        "type" : "string"
+        "type" : "string",
+        "minItems" : 0,
+        "maxItems" : 25
       }
     },
     "allowedIssuers" : {
@@ -31,18 +35,29 @@
             "maxLength" : 1024
           }
         },
-        "required" : [ "jwks", "value" ]
+        "required" : [ "jwks", "value" ],
+        "minItems" : 1,
+        "maxItems" : 25
       }
     },
     "createdAt" : {
       "description" : "READ-ONLY. A system-generated timestamp of when the API key was first created.",
       "type" : "string",
+      "readOnly" : true,
       "format" : "date-time"
     },
     "description" : {
       "description" : "OPTIONAL. An optional description of the JWT Verifier.",
       "type" : "string",
       "maxLength" : 1024
+    },
+    "extended" : {
+      "type" : "object",
+      "properties" : {
+        "map" : {
+          "type" : "object"
+        }
+      }
     },
     "id" : {
       "description" : "READ-ONLY. The system-generated identifier for the API key. Can never be changed (it is immutable).",
@@ -54,6 +69,9 @@
       "type" : "string",
       "maxLength" : 256
     },
+    "schema" : {
+      "$ref" : "../UrlReference.json"
+    },
     "slug" : {
       "description" : "REQUIRED. A url-safe name for the JWT Verifier. It can contain lower-case alphanumeric characters, the numbers zero through nine, '_' (underscore) and '-' (dash) characters. This property value is used for all rate-limiting requests. If a value is not provided on creation, a slug-ified version of the 'name' property is generated.",
       "type" : "string",
@@ -63,6 +81,7 @@
     "updatedAt" : {
       "description" : "READ-ONLY. A system-generated timestamp of when the API key was last updated.",
       "type" : "string",
+      "readOnly" : true,
       "format" : "date-time"
     },
     "verifiedClaims" : {
@@ -77,6 +96,7 @@
     }
   },
   "required" : [ "account", "allowedIssuers", "name", "slug" ],
+  "$id" : "https://schema.autheus.com/ratelimits/JwtConfig.json",
   "title" : "JwtVerifier",
   "description" : "JwtVerifier defines parameters to verify a Java Web Token (JWT). See https://jwtpal.com for more detailed information on JWT verification and the values encoded in Java Web Tokens."
 }

@@ -6,7 +6,7 @@
             "properties" : {
                 "rateplans" : {
                     "type" : "array",
-                    "items" : {"$ref" : "RatePlan.json"}
+                    "items" : {"$ref" : "RatePlanDefinition.json"}
                 }
             }
         }

@@ -10,6 +10,10 @@ get:
         application/json:
           schema:
             $ref: ../Accounts.json
+    '401':
+      $ref: ../../responses/401Unauthorized.yaml
+    '403':
+      $ref: ../../responses/403Forbidden.yaml
 post:
   tags:
     - Accounts
@@ -32,3 +36,12 @@ post:
         application/json:
           schema:
             $ref: ../Account.json
+    '400':
+      $ref: ../../responses/400BadRequest.yaml
+    '401':
+      $ref: ../../responses/401Unauthorized.yaml
+    '403':
+      $ref: ../../responses/403Forbidden.yaml
+    '404':
+      $ref: ../../responses/404NotFound.yaml
+

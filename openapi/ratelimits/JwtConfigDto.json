@@ -36,13 +36,30 @@
       "type" : "string",
       "maxLength" : 1024
     },
+    "extended" : {
+      "type" : "object",
+      "properties" : {
+        "map" : {
+          "type" : "object"
+        }
+      }
+    },
     "name" : {
       "description": "REQUIRED. A human-friendly name for the JWT Verifier.",
       "type" : "string",
       "maxLength" : 256
     },
+    "schema" : {
+      "anyOf" : [ {
+        "type" : "null"
+      }, {
+        "$ref" : "../UrlReference.json"
+      } ]
+    },
     "slug" : {
-      "type" : "string"
+      "type" : "string",
+      "maxLength" : 256,
+      "pattern" : "[a-z_\\-0-9]+"
     },
     "verifiedClaims" : {
       "description" : "OPTIONAL. An optional map of name/value pairs of claims (and their respective values) from the JWT that must be verified.",
@@ -55,6 +72,7 @@
       }
     }
   },
+  "$id" : "https://schema.autheus.com/ratelimits/JwtConfigDto.json",
   "title" : "JwtConfigDto",
   "description" : "The configuration properties needed to create or partially-update a JWT verifier configuration. For partial update use cases, all properties are optional: any provided properties will be merged with the previous version of the JWT verifier configuration."
 }

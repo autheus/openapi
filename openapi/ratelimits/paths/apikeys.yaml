@@ -22,8 +22,6 @@ get:
       $ref: ../../responses/401Unauthorized.yaml
     '403':
       $ref: ../../responses/403Forbidden.yaml
-  security:
-    - OAuth2: []
 post:
   tags:
     - API Keys

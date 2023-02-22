@@ -1,4 +1,5 @@
 {
+  "$schema" : "https://json-schema.org/draft/2020-12/schema",
   "type" : "object",
   "properties" : {
     "quota" : {
@@ -21,7 +22,7 @@
       }
     },
     "rateplan" : {
-      "$ref" : "RatePlanReference.json"
+      "$ref" : "RatePlanDefinitionReference.json"
     },
     "throttle" : {
       "type" : "object",
@@ -44,6 +45,7 @@
       }
     }
   },
+  "$id" : "https://schema.autheus.com/ratelimits/MetricsDto.json",
   "title" : "MetricsDto",
   "description" : "A read-only model detailing a metrics snapshot for an API key"
 }

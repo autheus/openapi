@@ -26,8 +26,6 @@ get:
       $ref: ../../responses/403Forbidden.yaml
     '404':
       $ref: ../../responses/404NotFound.yaml
-    '409':
-      $ref: ../../responses/409Conflict.yaml
   deprecated: false
 put:
   tags:

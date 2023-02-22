@@ -14,3 +14,9 @@ get:
         application/json:
           schema:
             $ref: ../MetricsResponse.json
+    '401':
+      $ref: ../../responses/401Unauthorized.yaml
+    '403':
+      $ref: ../../responses/403Forbidden.yaml
+    '404':
+      $ref: ../../responses/404NotFound.yaml

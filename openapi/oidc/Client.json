@@ -3,7 +3,8 @@
   "type" : "object",
   "properties" : {
     "account" : {
-      "$ref" : "../AccountReference.json"
+      "$ref" : "../AccountReference.json",
+      "readOnly" : true
     },
     "allowedGrantTypes" : {
       "minItems" : 1,

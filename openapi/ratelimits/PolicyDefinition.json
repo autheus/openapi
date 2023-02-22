@@ -1,8 +1,10 @@
 {
+  "$schema" : "https://json-schema.org/draft/2020-12/schema",
   "type" : "object",
   "properties" : {
     "account" : {
-      "$ref" : "../AccountReference.json"
+      "$ref" : "../AccountReference.json",
+      "readOnly" : true
     },
     "apikeys" : {
       "description" : "REQUIRED. An array of API Key Rules defining the API keys and associated rate plans to enforce rate limits. The API key values may be expressions that extract data from the incoming request.",
@@ -22,6 +24,7 @@
     "createdAt" : {
       "description" : "READ-ONLY. A system-generated timestamp of when the API key was first created.",
       "type" : "string",
+      "readOnly" : true,
       "format" : "date-time"
     },
     "description" : {
@@ -32,7 +35,8 @@
     "id" : {
       "description" : "READ-ONLY. The system-generated identifier for the API key. Can never be changed (it is immutable).",
       "type" : "string",
-      "format" : "uuid"
+      "format" : "uuid",
+      "readOnly" : true
     },
     "name" : {
       "description": "REQUIRED. A human-friendly name for the policy.",
@@ -52,10 +56,12 @@
     "updatedAt" : {
       "description" : "READ-ONLY. A system-generated timestamp of when the API key was last updated.",
       "type" : "string",
+      "readOnly" : true,
       "format" : "date-time"
     }
   },
-  "required" : [ "account", "apikeys", "combiningAlgorithm", "name", "slug" ],
+  "required" : [ "account", "apikeys", "name", "slug" ],
+  "$id" : "https://schema.autheus.com/ratelimits/PolicyDefinition.json",
   "title" : "PolicyDefinition",
   "description" : "Definition of a runtime rate-limiting policy and, optionally, authorization validation."
 }

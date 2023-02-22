@@ -1,12 +1,14 @@
 {
-    "type" : "object",
-    "properties" : {
+  "$schema" : "https://json-schema.org/draft/2020-12/schema",
+  "type" : "object",
+  "properties" : {
     "id" : {
-        "type" : "string",
-        "format" : "uuid"
+      "type" : "string",
+      "format" : "uuid"
     }
-    },
-    "required" : [ "id" ],
-    "title" : "UuidReference",
-    "description" : "This is a reference to another resource."  
+  },
+  "required" : [ "id" ],
+  "$id" : "https://schema.autheus.com/ratelimits/UuidReference.json",
+  "title" : "UuidReference",
+    "description" : "This is a reference to another resource (by its UUID)."  
 }

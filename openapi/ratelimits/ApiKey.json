@@ -1,12 +1,15 @@
 {
+  "$schema" : "https://json-schema.org/draft/2020-12/schema",
   "type" : "object",
   "properties" : {
     "account" : {
-      "$ref" : "../AccountReference.json"
+      "$ref" : "../AccountReference.json",
+      "readOnly" : true
     },
     "createdAt" : {
       "description" : "READ-ONLY. A system-generated timestamp of when the API key was first created.",
       "type" : "string",
+      "readOnly" : true,
       "format" : "date-time"
     },
     "description" : {
@@ -14,10 +17,19 @@
       "type" : "string",
       "maxLength" : 1024
     },
+    "extended" : {
+      "type" : "object",
+      "properties" : {
+        "map" : {
+          "type" : "object"
+        }
+      }
+    },
     "id" : {
       "description" : "READ-ONLY. The system-generated identifier for the API key. Can never be changed (it is immutable).",
       "type" : "string",
-      "format" : "uuid"
+      "format" : "uuid",
+      "readOnly" : true
     },
     "key" : {
       "description" : "REQUIRED. The user-provided value for the API key. It can contain alphanumeric characters, the numbers zero through nine, '_' (underscore) and '-' (dash) characters. This property value is used for all rate-limiting requests.",
@@ -27,15 +39,17 @@
     },
     "rateplan" : {
       "description" : "REQUIRED. This is a reference to the associated rate plan. On creation or update, either the 'id' or 'slug' property is required (not both).",
-      "$ref" : "RatePlanReference.json"
+      "$ref" : "RatePlanDefinitionReference.json"
     },
     "updatedAt" : {
       "description" : "READ-ONLY. A system-generated timestamp of when the API key was last updated.",
       "type" : "string",
+      "readOnly" : true,
       "format" : "date-time"
     }
   },
   "required" : [ "key", "rateplan" ],
+  "$id" : "https://schema.autheus.com/ratelimits/ApiKey.json",
   "title" : "ApiKey",
   "description" : "This defines a static (or pre-defined) API key that is associated to a specific rate plan. Static API keys can also be used for authorization by being verified in a rate-limiting decision request."
 }

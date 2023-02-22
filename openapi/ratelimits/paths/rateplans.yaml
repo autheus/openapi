@@ -10,6 +10,12 @@ get:
         application/json:
           schema:
             $ref: ../RatePlans.json
+    '401':
+      $ref: ../../responses/401Unauthorized.yaml
+    '403':
+      $ref: ../../responses/403Forbidden.yaml
+    '404':
+      $ref: ../../responses/404NotFound.yaml
 post:
   tags:
     - Rate Plans
@@ -20,7 +26,7 @@ post:
     content:
       application/json:
         schema:
-          $ref: ../RatePlanDto.json
+          $ref: ../RatePlanDefinitionDto.json
     required: true
   responses:
     '201':
@@ -30,4 +36,14 @@ post:
       content:
         application/json:
           schema:
-            $ref: ../RatePlan.json
+            $ref: ../RatePlanDefinition.json
+    '400':
+      $ref: ../../responses/400BadRequest.yaml
+    '401':
+      $ref: ../../responses/401Unauthorized.yaml
+    '403':
+      $ref: ../../responses/403Forbidden.yaml
+    '404':
+      $ref: ../../responses/404NotFound.yaml
+    '409':
+      $ref: ../../responses/409Conflict.yaml

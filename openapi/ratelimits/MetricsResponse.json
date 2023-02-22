@@ -1,8 +1,10 @@
 {
+  "$schema" : "https://json-schema.org/draft/2020-12/schema",
   "type" : "object",
   "properties" : {
     "account" : {
-      "$ref" : "../AccountReference.json"
+      "$ref" : "../AccountReference.json",
+      "readOnly" : true
     },
     "metrics" : {
       "type" : "object",
@@ -12,6 +14,7 @@
       }
     }
   },
+  "$id" : "https://schema.autheus.com/ratelimits/MetricsResponse.json",
   "title" : "MetricsResponse",
   "description" : "A read-only model detailing a metrics snapshot for a given API key"
 }

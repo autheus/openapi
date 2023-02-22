@@ -1,12 +1,14 @@
 {
+  "$schema" : "https://json-schema.org/draft/2020-12/schema",
   "type" : "object",
   "properties" : {
     "usePlan" : {
       "description" : "OPTIONAL. When a static API key is specified in the rule, but an API key in the request does not have an associated rate plan, this rate plan is used instead as a 'default'.",
-      "$ref" : "RatePlanReference.json"
+      "$ref" : "RatePlanDefinitionReference.json"
     }
   },
   "required" : [ "usePlan" ],
+  "$id" : "https://schema.autheus.com/ratelimits/ErrorRuleDefinition.json",
   "title" : "ErrorRuleDefinition",
   "description" : "Defines error handling for a static API key rule when the API key isn't found (is not predefined)."
 }
