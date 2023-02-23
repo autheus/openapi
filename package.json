@@ -7,7 +7,8 @@
   "private": true,
   "scripts": {
     "start": "redocly preview-docs",
-    "build": "redocly bundle -o dist",
+    "build": "redocly bundle -o dist/openapi.yaml",
+    "docs": "redocly build-docs -o dist/index.html autheus@v1",
     "test": "redocly lint"
   }
 }

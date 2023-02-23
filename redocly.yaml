@@ -17,5 +17,4 @@ features.openapi:
       - lang: curl
       - lang: Node.js
       - lang: JavaScript
-      - lang: PHP
       - lang: Python
