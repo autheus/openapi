@@ -6,7 +6,7 @@
       "format" : "uuid"
     }
   },
-  "required" : [ "id" ],
   "title" : "AccountReference",
-  "description" : "READ-ONLY. This is a reference to the account that owns this resource. This property is system-assigned and is neither required on creation nor modifiable on update."
+  "description" : "READ-ONLY. This is a reference to the account that owns this resource. This property is system-assigned and is neither required on creation nor modifiable on update.",
+  "readOnly": true
 }

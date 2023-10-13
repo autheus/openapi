@@ -1,0 +1,6 @@
+{
+    "description" : "READ-ONLY. A system-generated timestamp of when this resource was last updated.",
+    "type" : "string",
+    "readOnly" : true,
+    "format" : "date-time"
+}
