@@ -1,5 +1,5 @@
 description: 
-  An uncaught error occurred. This indicates a system outage.
+  An uncaught error occurred. This indicates a system outage. Retrying will generally not succeed.
 content:
   application/json:
     schema:
