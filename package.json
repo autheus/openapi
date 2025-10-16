@@ -2,11 +2,11 @@
   "name": "autheus-api",
   "version": "1.0.0",
   "dependencies": {
-    "@redocly/cli": "1.34.3"
+    "@redocly/cli": "2.6.0"
   },
   "private": true,
   "scripts": {
-    "start": "redocly preview-docs",
+    "start": "redocly preview",
     "build": "redocly bundle -o dist/openapi.yaml",
     "docs": "redocly build-docs -o dist/index.html autheus@v1",
     "test": "redocly lint"

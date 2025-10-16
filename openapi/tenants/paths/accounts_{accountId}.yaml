@@ -4,13 +4,7 @@ get:
   summary: Read an account configuration (by ID or slug)
   operationId: 'Account::read'
   parameters:
-    - name: accountId
-      in: path
-      description: The UUID or slug of the account (or "me" to use default).
-      required: true
-      allowEmptyValue: false
-      schema:
-        type: string
+    - $ref: ../../parameters/accountId.yaml
   responses:
     '200':
       description: Account configuration details.
@@ -30,13 +24,7 @@ put:
   summary: Update an account configuration (by ID or slug)
   operationId: 'Account::update'
   parameters:
-    - name: accountId
-      in: path
-      description: The UUID or slug of the account (or "me" to use default).
-      required: true
-      allowEmptyValue: false
-      schema:
-        type: string
+    - $ref: ../../parameters/accountId.yaml
   requestBody:
     description: Account configuration details.
     content:
@@ -63,13 +51,7 @@ delete:
   summary: Remove an entire account (by ID or slug)
   operationId: 'Account::delete'
   parameters:
-    - name: accountId
-      in: path
-      description: The UUID or slug of the account (or "me" to use default).
-      required: true
-      allowEmptyValue: false
-      schema:
-        type: string
+    - $ref: ../../parameters/accountId.yaml
   responses:
     '204':
       description: No content
@@ -90,13 +72,7 @@ patch:
     included in the body will not effect the Account configuration.  
   operationId: 'Account::patch'
   parameters:
-    - name: accountId
-      in: path
-      description: The UUID or slug of the account.
-      required: true
-      allowEmptyValue: false
-      schema:
-        type: string
+    - $ref: ../../parameters/accountId.yaml
   requestBody:
     description: Account configuration details.
     content:

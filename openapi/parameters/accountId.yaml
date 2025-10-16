@@ -1,0 +1,7 @@
+name: accountId
+in: path
+description: The UUID of your account (or "me" to use the account ID claim from the access token).
+required: true
+allowEmptyValue: false
+schema:
+  type: string

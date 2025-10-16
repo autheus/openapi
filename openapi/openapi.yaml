@@ -5,7 +5,7 @@ info:
   description:
     $ref: ./info-description.md
   license:
-    name: 'Commercial Enterprise'
+    name: 'Commercial, Enterprise'
     url: 'https://autheus.com'
   version: 1.0.0
 tags: 
